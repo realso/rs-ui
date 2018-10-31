@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 10px 10px;">
-    <div class="mui-segmented-control">
+    <div class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary">
       <slot></slot>
     </div>
   </div>
@@ -16,15 +16,9 @@
  *
  * @example
  * <rs-navbar :selected.sync="selected">
- *   <rs-tab-item value="订单">
- *     <span slot="label">订单</span>
- *   </rs-tab-item>
- * </rs-navbar>
- *
- * <rs-navbar :selected.sync="selected">
- *   <rs-tab-item :value="['传入数组', '也是可以的']">
- *     <span slot="label">订单</span>
- *   </rs-tab-item>
+ *   <rs-nav-item>
+ *     订单
+ *   </rs-nav-item>
  * </rs-navbar>
  *
  */
@@ -34,5 +28,5 @@ export default {
     fixed: Boolean,
     value: {}
   }
-};
+}
 </script>

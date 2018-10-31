@@ -25,5 +25,5 @@
 export default {
   name: 'rs-tab-item',
   props: ['id']
-};
+}
 </script>

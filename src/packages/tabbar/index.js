@@ -1,1 +1,1 @@
-export { default } from './src/tabbar.vue';
+export { default } from './src/tabbar.vue'

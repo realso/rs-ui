@@ -1,1 +1,1 @@
-export { default } from './src/tab-item.vue';
+export { default } from './src/tab-item.vue'

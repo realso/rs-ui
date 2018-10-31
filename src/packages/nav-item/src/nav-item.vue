@@ -22,5 +22,5 @@
 export default {
   name: 'rs-nav-item',
   props: ['id']
-};
+}
 </script>

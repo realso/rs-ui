@@ -2,8 +2,8 @@
   <button
     :type="nativeType"
     class="mui-btn"
-    :class="['mui-button-' + type, 'rs-btn-' + size, icon, {
-      'mui-btn-outlined': outlined
+    :class="['mui-button-' + type, 'rs-button--' + size, icon,{
+      'mui-btn-outlined': outlined,'mui-btn-link': link
     }]"
     @click="handleClick"
     :disabled="disabled">
@@ -16,24 +16,22 @@
  * rs-button
  * @module components/button
  * @desc 按钮
- * @param {string} [type=default] - 显示类型，接受 default, primary, danger
- * @param {boolean} [outlined=false] - 有无底色
- * @param {boolean} [disabled=false] - 禁用
- * @param {boolean} [plain=false] - 幽灵按钮
- * @param {string} [size=normal] - 尺寸，接受 normal, small, large
- * @param {string} [native-type] - 原生 type 属性
- * @param {string} [icon] - 图标，例如mui-icon-home或者自定义的图标
- * @param {slot} - 显示文本
- * @param {slot} [icon] 显示图标
+ * @param type {string} [type=default] - 显示类型，接受 default, primary, danger,success,white
+ * @param outlined {boolean} [outlined=false] - 有无底色 默认有底色
+ * @param disabled {boolean} [disabled=false] - 禁用 默认不禁用
+ * @param size {string} [size=normal] - 尺寸，接受 normal, small, large
+ * @param icon {string} [icon] - 图标，例如mui-icon-home或者自定义的图标
+ * @param slot {slot} - 显示文本
+ * @param link {boolean} [link=false] - 是否是文字按钮 默认为无文字按钮
  *
  * @example
- * <rs-button size="large" icon="mui-icon mui-icon-home" type="primary">按钮</rs-button>
+ * <rs-button type="primary" outlined="false" size="large" icon="mui-icon mui-icon-home" link="true">按钮</rs-button>
  */
 export default {
   name: 'rs-button',
   methods: {
-    handleClick(evt) {
-      this.$emit('click', evt);
+    handleClick (evt) {
+      this.$emit('click', evt)
     }
   },
   props: {
@@ -41,32 +39,51 @@ export default {
     disabled: Boolean,
     nativeType: String,
     outlined: Boolean,
+    link: Boolean,
     type: {
       type: String,
       default: 'primary',
-      validator(value) {
+      validator (value) {
         return [
           'primary',
           'danger',
           'success',
-          'warning'
-        ].indexOf(value) > -1;
+          'warning',
+          'white'
+        ].indexOf(value) > -1
       }
     },
     size: {
       type: String,
       default: 'normal',
-      validator(value) {
+      validator (value) {
         return [
           'small',
           'normal',
           'large'
-        ].indexOf(value) > -1;
+        ].indexOf(value) > -1
       }
     }
   }
-};
+}
 </script>
-<style lang="css">
-
+<style lang="postcss">
+@component-namespace rs {
+    @component button {
+      @modifier large {
+        display: block;
+        width: 100%;
+      }
+      @modifier normal {
+        display: inline-block;
+        padding: 0 12px;
+      }
+      @modifier small {
+        display: inline-block;
+        font-size: 14px;
+        padding: 0 12px;
+        height: 33px;
+      }
+    }
+  }
 </style>

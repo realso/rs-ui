@@ -15,14 +15,14 @@
  * <rs-tabbar v-model="selected">
  *   <rs-tab-item id="首页">
  *     <span slot="icon" class="mui-icon mui-home"></span>
- *     <span slot="label">首页</span>
+ *     首页
  *   </rs-tab-item>
  * </rs-tabbar>
  *
  * <rs-tabbar v-model="selected">
  *   <rs-tab-item :id="['传入数组', '也是可以的']">
  *     <span slot="icon" class="mui-icon mui-home"></span>
- *     <span slot="label">首页</span>
+ *     首页
  *   </rs-tab-item>
  * </rs-tabbar>
  */
@@ -32,5 +32,5 @@ export default {
     fixed: Boolean,
     value: {}
   }
-};
+}
 </script>
