@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="postcss">
 @component-namespace rs-spinner {
   @component triple-bounce {
     @descendent bounce1, bounce2, bounce3 {

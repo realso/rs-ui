@@ -11,15 +11,21 @@ import Loadmore from '../packages/loadmore'
 import List from '../packages/list'
 import ListItem from '../packages/list-item'
 import MedialistItem from '../packages/medialist-item'
-// import MessageBox from '../packages/message-box';
+import Grid from '../packages/grid'
+import GridItem from '../packages/grid-item'
+import Swipe from '../packages/swipe'
+import SwipeItem from '../packages/swipe-item'
+import Card from '../packages/card'
+import Popup from '../packages/popup'
+import MessageBox from '../packages/message-box'
 // import InfiniteScroll from '../packages/infinite-scroll';
-// import Lazyload from '../packages/lazyload';
+import Lazyload from '../packages/lazyload'
 // import Toast from '../packages/toast';
 // import Indicator from '../packages/indicator';
-// import merge from './utils/merge';
+import merge from '../utils/merge'
 
 const version = '1.0.6'
-const install = function (Vue) {
+const install = function (Vue, config = {}) {
   if (install.installed) return
 
   Vue.component(Header.name, Header)
@@ -35,13 +41,20 @@ const install = function (Vue) {
   Vue.component(List.name, List)
   Vue.component(ListItem.name, ListItem)
   Vue.component(MedialistItem.name, MedialistItem)
+  Vue.component(Grid.name, Grid)
+  Vue.component(GridItem.name, GridItem)
+  Vue.component(Swipe.name, Swipe)
+  Vue.component(SwipeItem.name, SwipeItem)
+  Vue.component(Card.name, Card)
+  Vue.component(Popup.name, Popup)
+  // Vue.component(MessageBox.name, MessageBox)
   // Vue.use(InfiniteScroll);
-  // Vue.use(Lazyload, merge({
-  //   loading: require('../assets/loading-spin.svg'),
-  //   attempt: 3
-  // }, config.lazyload));
+  Vue.use(Lazyload, merge({
+    loading: require('../assets/loading-spin.svg'),
+    attempt: 3
+  }, config.lazyload))
 
-  // Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
+  Vue.$messagebox = Vue.prototype.$messagebox = MessageBox
   // Vue.$toast = Vue.prototype.$toast = Toast;
   // Vue.$indicator = Vue.prototype.$indicator = Indicator;
 }
@@ -66,10 +79,16 @@ export default {
   Loadmore,
   List,
   ListItem,
-  MedialistItem
+  MedialistItem,
+  Grid,
+  GridItem,
+  Swipe,
+  SwipeItem,
+  Card,
+  Popup,
   // Toast,
   // Indicator,
-  // MessageBox,
+  MessageBox,
   // InfiniteScroll
-  // Lazyload,
+  Lazyload
 }
