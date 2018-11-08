@@ -13,8 +13,6 @@ import ListItem from '../packages/list-item'
 import MedialistItem from '../packages/medialist-item'
 import Grid from '../packages/grid'
 import GridItem from '../packages/grid-item'
-import Swipe from '../packages/swipe'
-import SwipeItem from '../packages/swipe-item'
 import Card from '../packages/card'
 import Popup from '../packages/popup'
 import MessageBox from '../packages/message-box'
@@ -43,8 +41,6 @@ const install = function (Vue, config = {}) {
   Vue.component(MedialistItem.name, MedialistItem)
   Vue.component(Grid.name, Grid)
   Vue.component(GridItem.name, GridItem)
-  Vue.component(Swipe.name, Swipe)
-  Vue.component(SwipeItem.name, SwipeItem)
   Vue.component(Card.name, Card)
   Vue.component(Popup.name, Popup)
   // Vue.component(MessageBox.name, MessageBox)
@@ -82,8 +78,6 @@ export default {
   MedialistItem,
   Grid,
   GridItem,
-  Swipe,
-  SwipeItem,
   Card,
   Popup,
   // Toast,

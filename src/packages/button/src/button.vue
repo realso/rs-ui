@@ -2,7 +2,7 @@
   <button
     :type="nativeType"
     class="mui-btn"
-    :class="['mui-button-' + type, 'rs-button--' + size, icon,{
+    :class="['mui-btn-' + type, 'rs-button--' + size, icon,{
       'mui-btn-outlined': outlined,'mui-btn-link': link
     }]"
     @click="handleClick"

@@ -309,7 +309,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="postcss">
 @component-namespace rs {
   @component loadmore {
     overflow: hidden;
