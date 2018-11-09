@@ -1,5 +1,5 @@
 <template>
-  <ul class="mui-table-view mui-grid-view mui-grid-9" :class="'rs-grid-' + type,{'rs-grid-border':border,}">
+  <ul class="mui-table-view mui-grid-view mui-grid-9" :class="['rs-grid-' + type, {'rs-grid-border':border}]">
     <slot></slot>
   </ul>
 </template>
