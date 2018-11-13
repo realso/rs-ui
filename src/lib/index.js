@@ -16,13 +16,15 @@ import GridItem from '../packages/grid-item'
 import Card from '../packages/card'
 import Popup from '../packages/popup'
 import MessageBox from '../packages/message-box'
+import Search from '../packages/search'
+import Tip from '../packages/tip'
 // import InfiniteScroll from '../packages/infinite-scroll';
 import Lazyload from '../packages/lazyload'
 // import Toast from '../packages/toast';
 // import Indicator from '../packages/indicator';
 import merge from '../utils/merge'
 
-const version = '1.0.6'
+const version = '1.0.18'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
@@ -43,6 +45,8 @@ const install = function (Vue, config = {}) {
   Vue.component(GridItem.name, GridItem)
   Vue.component(Card.name, Card)
   Vue.component(Popup.name, Popup)
+  Vue.component(Search.name, Search)
+  Vue.component(Tip.name, Tip)
   // Vue.component(MessageBox.name, MessageBox)
   // Vue.use(InfiniteScroll);
   Vue.use(Lazyload, merge({
@@ -83,6 +87,8 @@ export default {
   // Toast,
   // Indicator,
   MessageBox,
+  Search,
+  Tip,
   // InfiniteScroll
   Lazyload
 }

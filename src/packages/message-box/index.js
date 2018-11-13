@@ -1,1 +1,1 @@
-export { default } from './src/message-box.vue'
+export { default } from './src/message-box.js'

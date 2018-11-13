@@ -1,5 +1,5 @@
 <template>
-  <ul class="mui-table-view" :class="['rs-font-' + size]">
+  <ul class="mui-table-view" :class="['rs-font-' + size, {'rs-list-border': border}]">
     <slot></slot>
   </ul>
 </template>
@@ -10,8 +10,9 @@
  * @desc 列表，依赖 list-item
  *
  * @param size {string} [size=14] - 尺寸，接受 12, 14, 16, 17
+ * @param border {boolean} [border=false] - 有无边框 默认有边框
  * @example
- * <rs-list size="14">
+ * <rs-list size="14" border=true>
  *   <rs-list-item>
  *     <span slot="left" class="mui-icon mui-icon-person"></span>
  *     首页
@@ -24,15 +25,18 @@
 export default {
   name: 'rs-list',
   props: {
-    size: String,
-    default: '14',
-    validator (value) {
-      return [
-        '12',
-        '14',
-        '15',
-        '16'
-      ].indexOf(value) > -1
+    border: Boolean,
+    size: {
+      size: String,
+      default: '14',
+      validator (value) {
+        return [
+          '12',
+          '14',
+          '15',
+          '16'
+        ].indexOf(value) > -1
+      }
     }
   }
 }
@@ -51,6 +55,13 @@ export default {
       }
       @descendent 16 {
         font-size: 16px;
+      }
+    }
+     @component list {
+      @descendent border {
+        &:before,&:after { 
+          display: none; 
+        }     
       }
     }
   }

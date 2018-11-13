@@ -52,13 +52,13 @@ export default {
         }
       }
       @descendent default {
-        background: #f2f2f2;
+        background: #f2f2f2 !important;
       }
       @descendent gary {
-        background: #ccc;
+        background: #ccc !important;
       }
       @descendent white {
-        background: #fff;
+        background: #fff !important;
       }
     }
   }
