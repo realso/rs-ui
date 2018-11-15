@@ -11,7 +11,7 @@
       </div>
       <a
         class="rs-searchbar-cancel"
-        @click="show = true"
+        @click="Click"
         v-text="cancelText">
       </a>
     </div>
@@ -62,6 +62,12 @@ export default {
     },
     value (val) {
       this.currentValue = val
+    }
+  },
+  methods: {
+    Click (evt) {
+      this.show = true
+      this.$emit('click', evt)
     }
   },
   props: {
