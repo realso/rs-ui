@@ -4,7 +4,6 @@
       <div class="mui-input-row mui-search">
         <input
         ref="input"
-        @click="visible = true"
         type="search"
         v-model="currentValue"
         :placeholder="placeholder"
@@ -12,15 +11,14 @@
       </div>
       <a
         class="rs-searchbar-cancel"
-        @click="visible = false, currentValue = ''"
-        v-show="visible"
+        @click="show = true"
         v-text="cancelText">
       </a>
     </div>
     <div class="rs-search-list" v-show="show || currentValue">
       <div class="rs-search-list-warp">
         <slot>
-        <ul class="mui-table-view"><li class="mui-table-view-divider mui-indexed-list-group" v-for="(item, index) in result" :title="item" :key="index">{{item}}</li></ul>
+          <ul class="mui-table-view"><li class="mui-table-view-divider mui-indexed-list-group" v-for="(item, index) in result" :title="item" :key="index">{{item}}</li></ul>
         </slot>
       </div>
     </div>
@@ -33,7 +31,7 @@
  * @module components/search
  * @desc 搜索框
  * @param {string} value - 绑定值
- * @param {string} [cancel-text=取消] - 取消按钮文字
+ * @param {string} [cancel-text=查询] - 查询按钮文字
  * @param {string} [placeholder=取消] - 搜索框占位内容
  * @param {boolean} [autofocus=false] - 自动 focus
  * @param {boolean} [show=false] - 始终显示列表
@@ -43,7 +41,11 @@
  * @example
  * <rs-search :value.sync="value" :result.sync="result"></rs-search>
  * <rs-search :value.sync="value">
- *   <rs-list v-for="item in result" :title="item"></rs-list>
+ *   <rs-list size="12">
+ *     <rs-list-item v-for="(item,index) in filterResult" isright=true :key="index" @click.native="searchItem(index)">
+ *       {{item}}
+ *     </rs-list-item>
+ *   </rs-list>
  * </rs-search>
  */
 export default {
@@ -64,10 +66,9 @@ export default {
   },
   props: {
     value: String,
-    autofocus: Boolean,
     show: Boolean,
     cancelText: {
-      default: '取消'
+      default: '查询'
     },
     placeholder: {
       default: '搜索'

@@ -1,5 +1,5 @@
 <template>
-  <ul class="mui-table-view mui-grid-view mui-grid-9" :class="['rs-grid-' + type, {'rs-grid-border':border}]">
+  <ul class="mui-table-view mui-grid-view mui-grid-9" :class="['rs-grid-' + type,{'rs-grid-border':border}]">
     <slot></slot>
   </ul>
 </template>
@@ -52,13 +52,13 @@ export default {
         }
       }
       @descendent default {
-        background: #f2f2f2 !important;
+        background: #f2f2f2;
       }
       @descendent gary {
-        background: #ccc !important;
+        background: #ccc;
       }
       @descendent white {
-        background: #fff !important;
+        background: #fff;
       }
     }
   }

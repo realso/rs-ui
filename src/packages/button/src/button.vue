@@ -86,4 +86,11 @@ export default {
       }
     }
   }
+  @component-namespace mui {
+    @component btn {
+      @descendent white {
+        background: #fff;
+      }
+    }
+  }
 </style>
