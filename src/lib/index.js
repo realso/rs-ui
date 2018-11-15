@@ -23,72 +23,73 @@ import Lazyload from '../packages/lazyload'
 // import Toast from '../packages/toast';
 // import Indicator from '../packages/indicator';
 import merge from '../utils/merge'
+import '../assets/css/mui.css';
 
 const version = '1.0.18'
-const install = function (Vue, config = {}) {
-  if (install.installed) return
+const install = function(Vue, config = {}) {
+    if (install.installed) return
 
-  Vue.component(Header.name, Header)
-  Vue.component(TabItem.name, TabItem)
-  Vue.component(NavItem.name, NavItem)
-  Vue.component(Navbar.name, Navbar)
-  Vue.component(Tabbar.name, Tabbar)
-  Vue.component(Button.name, Button)
-  Vue.component(Tabcontainer.name, Tabcontainer)
-  Vue.component(Tabcontaineritem.name, Tabcontaineritem)
-  Vue.component(Spinner.name, Spinner)
-  Vue.component(Loadmore.name, Loadmore)
-  Vue.component(List.name, List)
-  Vue.component(ListItem.name, ListItem)
-  Vue.component(MedialistItem.name, MedialistItem)
-  Vue.component(Grid.name, Grid)
-  Vue.component(GridItem.name, GridItem)
-  Vue.component(Card.name, Card)
-  Vue.component(Popup.name, Popup)
-  Vue.component(Search.name, Search)
-  Vue.component(Tip.name, Tip)
-  // Vue.component(MessageBox.name, MessageBox)
-  // Vue.use(InfiniteScroll);
-  Vue.use(Lazyload, merge({
-    loading: require('../assets/loading-spin.svg'),
-    attempt: 3
-  }, config.lazyload))
+    Vue.component(Header.name, Header)
+    Vue.component(TabItem.name, TabItem)
+    Vue.component(NavItem.name, NavItem)
+    Vue.component(Navbar.name, Navbar)
+    Vue.component(Tabbar.name, Tabbar)
+    Vue.component(Button.name, Button)
+    Vue.component(Tabcontainer.name, Tabcontainer)
+    Vue.component(Tabcontaineritem.name, Tabcontaineritem)
+    Vue.component(Spinner.name, Spinner)
+    Vue.component(Loadmore.name, Loadmore)
+    Vue.component(List.name, List)
+    Vue.component(ListItem.name, ListItem)
+    Vue.component(MedialistItem.name, MedialistItem)
+    Vue.component(Grid.name, Grid)
+    Vue.component(GridItem.name, GridItem)
+    Vue.component(Card.name, Card)
+    Vue.component(Popup.name, Popup)
+    Vue.component(Search.name, Search)
+    Vue.component(Tip.name, Tip)
+        // Vue.component(MessageBox.name, MessageBox)
+        // Vue.use(InfiniteScroll);
+    Vue.use(Lazyload, merge({
+        loading: require('../assets/loading-spin.svg'),
+        attempt: 3
+    }, config.lazyload))
 
-  Vue.$messagebox = Vue.prototype.$messagebox = MessageBox
-  // Vue.$toast = Vue.prototype.$toast = Toast;
-  // Vue.$indicator = Vue.prototype.$indicator = Indicator;
+    Vue.$messagebox = Vue.prototype.$messagebox = MessageBox
+        // Vue.$toast = Vue.prototype.$toast = Toast;
+        // Vue.$indicator = Vue.prototype.$indicator = Indicator;
 }
 
 // auto install
 if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue)
+    install(window.Vue)
 }
 
 export default {
-  install,
-  version,
-  Header,
-  TabItem,
-  NavItem,
-  Navbar,
-  Tabbar,
-  Button,
-  Tabcontainer,
-  Tabcontaineritem,
-  Spinner,
-  Loadmore,
-  List,
-  ListItem,
-  MedialistItem,
-  Grid,
-  GridItem,
-  Card,
-  Popup,
-  // Toast,
-  // Indicator,
-  MessageBox,
-  Search,
-  Tip,
-  // InfiniteScroll
-  Lazyload
+    install,
+    version,
+    Header,
+    TabItem,
+    NavItem,
+    Navbar,
+    Tabbar,
+    Button,
+    Tabcontainer,
+    Tabcontaineritem,
+    Spinner,
+    Loadmore,
+    List,
+    ListItem,
+    MedialistItem,
+    Grid,
+    GridItem,
+    Card,
+    Popup,
+    // Toast,
+    // Indicator,
+    MessageBox,
+    Search,
+    Tip,
+    // InfiniteScroll
+    Lazyload
 }
