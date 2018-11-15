@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/lib/index.js',
@@ -79,6 +80,10 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        })
+        }),
+        new CopyWebpackPlugin([{
+            from: __dirname + '/src/assets/',
+            to: __dirname + '/dist/',
+        }])
     ])
 }

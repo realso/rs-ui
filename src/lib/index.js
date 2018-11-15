@@ -23,7 +23,6 @@ import Lazyload from '../packages/lazyload'
 // import Toast from '../packages/toast';
 // import Indicator from '../packages/indicator';
 import merge from '../utils/merge'
-import '../assets/css/mui.css';
 
 const version = '1.0.18'
 const install = function(Vue, config = {}) {
