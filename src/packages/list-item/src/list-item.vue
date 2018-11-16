@@ -1,7 +1,7 @@
 <template>
-  <li class="mui-table-view-cell" @click="Click()">
+  <li class="rs-listItem" @click="Click()">
     <a :class="{'mui-navigate-right':isright}">
-      <slot name="right"></slot>
+      <span class="rs-listItem-right" :style="{'margin-right:15px':isright}"><slot name="right"></slot></span>
       <slot></slot>
     </a>
   </li>
@@ -33,3 +33,26 @@ export default {
   }
 }
 </script>
+<style lang="postcss">
+@component-namespace rs {
+    @component listItem {
+      position: relative;
+      overflow: hidden;
+      padding: 11px 15px;
+      @descendent right {
+        float: right;
+      }
+      &:after{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 15px;
+      height: 1px;
+      content: '';
+      transform: scaleY(.5);
+      background-color: #c8c7cc;
+      }
+    }
+
+  }
+</style>

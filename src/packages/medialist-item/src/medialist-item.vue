@@ -1,8 +1,8 @@
 <template>
-  <li class="mui-table-view-cell" @click="Click()">
+  <li class="rs-listMedia" :class="['rs-listMedia-'+size]" @click="Click()">
     <a :class="{'mui-navigate-right':isright}">
-      <slot name="left" class="mui-media-object mui-pull-left"></slot>
-      <div class="mui-media-body">
+      <span class="rs-listMedia-object rs-listMedia-left"><slot name="left"></slot></span>
+      <div class="rs-listMedia-body">
         <slot></slot>
       </div>
     </a>
@@ -14,6 +14,7 @@
  * @desc 搭配 list 使用
  * @module components/rs-medialist-item
  *
+ * @param size {string} [size=normal] - 尺寸，接受 normal, small, large
  * @param isright {boolean} [isright=true] - 禁用 默认不禁用
  *
  * @example
@@ -31,7 +32,17 @@ export default {
   name: 'rs-medialist-item',
   props: {
     isright: Boolean,
-    path: String
+    size: {
+      type: String,
+      default: 'normal',
+      validator (value) {
+        return [
+          'small',
+          'normal',
+          'large'
+        ].indexOf(value) > -1
+      }
+    }
   },
   methods: {
     Click (evt) {
@@ -40,3 +51,40 @@ export default {
   }
 }
 </script>
+<style lang="postcss">
+@component-namespace rs {
+    @component listMedia {
+      position: relative;
+      overflow: hidden;
+      padding: 11px 15px;
+      @descendent right {
+        float: right;
+        img{width:100%;height:100%;display: block;}
+      }
+      @descendent left {
+        float: left;
+        margin-right: 10px;
+        img{width:100%;height:100%;display: block;}
+      }
+      @descendent body {
+        overflow: hidden;
+      }
+      @descendent object {
+        line-height: 42px;
+        max-width: 42px;
+        height: 42px;
+      }
+      &:after{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 15px;
+      height: 1px;
+      content: '';
+      transform: scaleY(.5);
+      background-color: #c8c7cc;
+      }
+    }
+
+  }
+</style>

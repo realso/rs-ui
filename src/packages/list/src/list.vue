@@ -1,5 +1,5 @@
 <template>
-  <ul class="mui-table-view" :class="['rs-font-' + size]">
+  <ul class="rs-list" :class="['rs-font-' + size]">
     <slot></slot>
   </ul>
 </template>
@@ -39,19 +39,53 @@ export default {
 </script>
 <style lang="postcss">
 @component-namespace rs {
-    @component font {
-      @descendent 12 {
-        font-size: 12px;
-      }
-      @descendent 14 {
-        font-size: 14px;
-      }
-      @descendent 15 {
-        font-size: 15px;
-      }
-      @descendent 16 {
-        font-size: 16px;
-      }
+  @component list {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    background-color: #fff;
+    &:before,&:after{
+      position: absolute;
+      right: 0;
+      left: 0;
+      height: 1px;
+      content: '';
+      -webkit-transform: scaleY(.5);
+      transform: scaleY(.5);
+      background-color: #c8c7cc;
+    }
+    &:before{
+      top: -1px;
+    }
+    &:after{
+      bottom: 0;
+    }
+    a:not(.mui-btn){
+      position: relative;
+      display: block;
+      overflow: hidden;
+      margin: -11px -15px;
+      padding: inherit;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: inherit;
     }
   }
+  @component font {
+    @descendent 12 {
+      font-size: 12px;
+    }
+    @descendent 14 {
+      font-size: 14px;
+    }
+    @descendent 15 {
+      font-size: 15px;
+    }
+    @descendent 16 {
+      font-size: 16px;
+    }
+  }
+}
 </style>

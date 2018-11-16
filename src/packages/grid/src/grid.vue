@@ -1,5 +1,5 @@
 <template>
-  <ul class="mui-table-view mui-grid-view mui-grid-9" :class="['rs-grid-' + type,{'rs-grid-border':border}]">
+  <ul class="rs-grid" :class="['rs-grid-' + type,{'rs-grid-border':border}]">
     <slot></slot>
   </ul>
 </template>
@@ -9,7 +9,7 @@
  * rs-grid
  * @module components/grid
  * @desc 九宫格
- * @param type {string} [type=default] - 显示类型，接受 default(浅灰), gary（深灰）, white（白色）
+ * @param type {string} [type=default] - 显示背景，接受 default(浅灰), grey（灰白色）, white（白色）
  * @param border {boolean} [border=false] - 有无边框 默认有边框
  *
  * @example
@@ -33,7 +33,7 @@ export default {
       default: 'default',
       validator (value) {
         return [
-          'gary',
+          'grey',
           'white'
         ].indexOf(value) > -1
       }
@@ -44,21 +44,36 @@ export default {
 <style lang="postcss">
 @component-namespace rs {
     @component grid {
+      font-size: 17px;
+      display: block;
+      width: 100%;
+      white-space: normal;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      &:before,&:after{
+        display: table;
+        content: ' ';
+      }
+      &:after{
+        clear: both;
+      }
       @descendent border {
-        border: none !important;
-        .mui-table-view-cell {
-          border-right: none !important;
-          border-bottom: none !important;
+        border-top: 1px solid #eee;
+        border-left: 1px solid #eee;  
+        .rs-gridItem {
+          border-right: 1px solid #eee;
+          border-bottom: 1px solid #eee;
         }
       }
       @descendent default {
-        background: #f2f2f2 !important;
+        background: #f2f2f2;
       }
-      @descendent gary {
-        background: #ccc !important;
+      @descendent grey {
+        background: #c7c7cc;
       }
       @descendent white {
-        background: #fff !important;
+        background: #fff;
       }
     }
   }

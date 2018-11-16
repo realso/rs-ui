@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/button",
+    "name": "按钮button"
+  },
+  {
+    "path": "/card",
+    "name": "卡片card"
+  },
+  {
+    "path": "/grid",
+    "name": "九宫格grid"
+  },
+  {
+    "path": "/header",
+    "name": "导航header"
+  },
+  {
+    "path": "/lazyload",
+    "name": "懒加载lazyload"
+  },
+  {
+    "path": "/listItem",
+    "name": "列表list"
+  }
+]
