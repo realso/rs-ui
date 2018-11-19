@@ -33,6 +33,33 @@
           </rs-list-item>
         </rs-list>
         <h5>
+          边框：noborder {Boolean} ，默认有底部边框线<br/>
+          例如：
+          <pre>
+&lt;rs-list border size="14"&gt;
+  &lt;rs-list-item&gt;页眉&lt;/rs-list-item&gt;
+  &lt;rs-list-item&gt;点赞&lt;/rs-list-item&gt;
+  &lt;rs-list-item&gt;页脚&lt;/rs-list-item&gt;
+&lt;/rs-grid&gt;
+          </pre>
+        </h5>
+        <rs-list size="14" noborder>
+          <rs-list-item>
+            <span slot="left" class="mui-icon mui-icon-person"></span>
+            首页
+            <div slot="right">
+            返回
+            </div>
+          </rs-list-item>
+          <rs-list-item noborder>
+            <span slot="left" class="mui-icon mui-icon-person"></span>
+            首页
+            <div slot="right">
+            返回
+            </div>
+          </rs-list-item>
+        </rs-list>
+        <h5>
           左侧是图片左右格式：
           例如：
           <pre>

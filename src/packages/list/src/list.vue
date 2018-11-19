@@ -1,5 +1,5 @@
 <template>
-  <ul class="rs-list" :class="['rs-font-' + size]">
+  <ul class="rs-list" :class="['rs-font-' + size, {'rs-list-noborder':noborder}]">
     <slot></slot>
   </ul>
 </template>
@@ -10,6 +10,7 @@
  * @desc 列表，依赖 list-item
  *
  * @param size {string} [size=14] - 尺寸，接受 12, 14, 16, 17
+ * @param noborder {Boolean} [noborder] - 边框，默认有边框
  * @example
  * <rs-list size="14">
  *   <rs-list-item>
@@ -25,6 +26,7 @@ export default {
   name: 'rs-list',
   props: {
     size: String,
+    noborder: Boolean,
     default: '14',
     validator (value) {
       return [
@@ -46,6 +48,16 @@ export default {
     padding-left: 0;
     list-style: none;
     background-color: #fff;
+    a:not(.mui-btn){
+      position: relative;
+      display: block;
+      overflow: hidden;
+      margin: -11px -15px;
+      padding: inherit;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: inherit;
+    }
     &:before,&:after{
       position: absolute;
       right: 0;
@@ -62,15 +74,8 @@ export default {
     &:after{
       bottom: 0;
     }
-    a:not(.mui-btn){
-      position: relative;
-      display: block;
-      overflow: hidden;
-      margin: -11px -15px;
-      padding: inherit;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      color: inherit;
+    @descendent noborder {
+      &:before,&:after{height: 0}
     }
   }
   @component font {
