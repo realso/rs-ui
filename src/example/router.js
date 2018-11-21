@@ -7,6 +7,9 @@ import grid from './grid/grid'
 import header from './header/header'
 import lazyload from './lazyload/lazyload'
 import listItem from './listItem/listItem'
+import loadmoredown from './loadmore/loadmoredown'
+import loadmoreup from './loadmore/loadmoreup'
+import navbar from './navbar/navbar'
 
 Vue.use(Router)
 
@@ -46,6 +49,21 @@ export default new Router({
           path: '/listItem',
           name: 'listItem',
           component: listItem
+        },
+        {
+          path: '/loadmoredown',
+          name: 'loadmoredown',
+          component: loadmoredown
+        },
+        {
+          path: '/loadmoreup',
+          name: 'loadmoreup',
+          component: loadmoreup
+        },
+        {
+          path: '/navbar',
+          name: 'navbar',
+          component: navbar
         }
     ]
 })

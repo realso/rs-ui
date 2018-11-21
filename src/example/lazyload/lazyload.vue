@@ -1,5 +1,5 @@
 <template>
-  <div class="rs-layout rs-layout-top">
+  <div class="mui-layout mui-layout-top">
     <rs-header title="懒加载lazyload" color="primary">
       <a slot="left" class="mui-icon mui-icon-left-nav" href="/"></a>
     </rs-header>

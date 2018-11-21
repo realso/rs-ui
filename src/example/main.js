@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import RsUi from '../lib'
-import "../assets/css/mui.css"
+import "../assets/css/mui1.css"
 
 Vue.config.productionTip = false
 Vue.use(RsUi);

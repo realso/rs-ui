@@ -22,5 +22,17 @@
   {
     "path": "/listItem",
     "name": "列表list"
+  },
+  {
+    "path": "/loadmoredown",
+    "name": "pull down"
+  },
+  {
+    "path": "/loadmoreup",
+    "name": "pull up"
+  },
+  {
+    "path": "/navbar",
+    "name": "选项卡navbar"
   }
 ]

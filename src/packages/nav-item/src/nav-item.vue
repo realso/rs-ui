@@ -1,7 +1,7 @@
 <template>
-  <a class="mui-control-item"
+  <a class="rs-navbar-item"
     @click="$parent.$emit('input', id)"
-    :class="{ 'mui-active': $parent.value === id }">
+    :class="{ 'is-active': $parent.value === id }">
     <slot></slot>
   </a>
 </template>
@@ -24,3 +24,29 @@ export default {
   props: ['id']
 }
 </script>
+<style lang="postcss">
+  @component-namespace rs {
+    @component navbar {
+      @descendent item {
+        line-height: 38px;
+        display: table-cell;
+        overflow: hidden;
+        width: 1%;
+        transition: background-color .1s linear;
+        text-align: center;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: #58cffa;
+        border-color: #58cffa;
+        border-left: 1px solid #58cffa;
+        &:first-child{
+          border-left-width: 0;
+        }
+        @when active{
+          color: #fff;
+          background-color: #58cffa;
+        }
+      }
+    }
+  }
+</style>      

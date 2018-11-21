@@ -17,7 +17,7 @@
  * @desc 顶部导航
  * @param title {string} [title="我是标题"] - 标题
  * @param transparent {boolean} [transparent] - 导航是否是透明导航栏，默认不是透明
- * @param color {string} [color] -导航的背景颜色默认灰色 接受 primary(蓝色), white(白色)
+ * @param color {string} [color] -导航的背景颜色默认灰色 接受 primary(浅蓝色), blue(蓝色)， white(白色)
  * @param {slot} [left] - 显示在左侧区域
  * @param {slot} [right] - 显示在右侧区域
  *
@@ -38,6 +38,7 @@ export default {
       validator (value) {
         return [
           'primary',
+          'blue',
           'white'
         ].indexOf(value) > -1
       }
@@ -73,6 +74,14 @@ export default {
       @descendent primary {
         color: #fff;
         background: #58cffa;
+        a{
+          color: #fff;
+          line-height:44px;
+        }
+      }
+      @descendent blue {
+        color: #fff;
+        background: #29b1e8;
         a{
           color: #fff;
           line-height:44px;
