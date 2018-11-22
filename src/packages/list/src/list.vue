@@ -9,7 +9,7 @@
  * @module components/list
  * @desc 列表，依赖 list-item
  *
- * @param size {string} [size=14] - 尺寸，接受 12, 14, 16, 17
+ * @param size {string} [size=14] - 尺寸，接受 12, 14, 16, 15
  * @param noborder {Boolean} [noborder] - 边框，默认有边框
  * @example
  * <rs-list size="14">
@@ -25,17 +25,19 @@
 export default {
   name: 'rs-list',
   props: {
-    size: String,
-    noborder: Boolean,
-    default: '14',
-    validator (value) {
-      return [
-        '12',
-        '14',
-        '15',
-        '16'
-      ].indexOf(value) > -1
-    }
+    size: {
+      type: String,
+      default: '14',
+      validator (value) {
+        return [
+          '12',
+          '14',
+          '15',
+          '16'
+        ].indexOf(value) > -1
+      }
+    },
+    noborder: Boolean
   }
 }
 </script>

@@ -32,7 +32,15 @@
     "name": "pull up"
   },
   {
+    "path": "/messageBox",
+    "name": "消息框messageBox"
+  },
+  {
     "path": "/navbar",
     "name": "选项卡navbar"
+  },
+  {
+    "path": "/tabbar",
+    "name": "底部选项卡tabbar"
   }
 ]

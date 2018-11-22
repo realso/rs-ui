@@ -1235,39 +1235,7 @@ p
     height: 24px;
 }
 
-.mui-bar
-{
-    position: fixed;
-    z-index: 10;
-    right: 0;
-    left: 0;
 
-    height: 44px;
-    padding-right: 10px;
-    padding-left: 10px;
-
-    border-bottom: 0;
-    background-color: #f7f7f7;
-    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
-            box-shadow: 0 0 1px rgba(0, 0, 0, .85);
-
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-}
-
-.mui-bar .mui-title
-{
-    right: 40px;
-    left: 40px;
-
-    display: inline-block;
-    overflow: hidden;
-
-    width: auto;
-    margin: 0;
-
-    text-overflow: ellipsis;
-}
 .mui-bar .mui-backdrop
 {
     background: none;
@@ -1298,65 +1266,6 @@ p
 .mui-bar-footer-secondary-tab
 {
     border-top: 0;
-}
-
-.mui-bar-tab
-{
-    bottom: 0;
-
-    display: table;
-
-    width: 100%;
-    height: 50px;
-    padding: 0;
-
-    table-layout: fixed;
-
-    border-top: 0;
-    border-bottom: 0;
-
-    -webkit-touch-callout: none;
-}
-.mui-bar-tab .mui-tab-item
-{
-    display: table-cell;
-    overflow: hidden;
-
-    width: 1%;
-    height: 50px;
-
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
-    color: #929292;
-}
-.mui-bar-tab .mui-tab-item.mui-active
-{
-    color: #58cffa;
-}
-.mui-bar-tab .mui-tab-item .mui-icon
-{
-    top: 3px;
-
-    width: 24px;
-    height: 24px;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-.mui-bar-tab .mui-tab-item .mui-icon ~ .mui-tab-label
-{
-    font-size: 11px;
-
-    display: block;
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-.mui-bar-tab .mui-tab-item .mui-icon:active
-{
-    background: none;
 }
 
 .mui-focusin > .mui-bar-nav,
@@ -2917,26 +2826,6 @@ select:focus
     display: none;
 }
 
-.mui-segmented-control
-{
-    font-size: 15px;
-    font-weight: 400;
-
-    position: relative;
-
-    display: table;
-    overflow: hidden;
-
-    width: 100%;
-
-    table-layout: fixed;
-
-    border: 1px solid #58cffa;
-    border-radius: 3px;
-    background-color: transparent;
-
-    -webkit-touch-callout: none;
-}
 .mui-segmented-control.mui-segmented-control-vertical
 {
     border-collapse: collapse;
@@ -2971,41 +2860,6 @@ select:focus
 
     border: 0;
 }
-.mui-segmented-control .mui-control-item
-{
-    line-height: 38px;
-
-    display: table-cell;
-    overflow: hidden;
-
-    width: 1%;
-
-    -webkit-transition: background-color .1s linear;
-            transition: background-color .1s linear;
-    text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
-    color: #58cffa;
-    border-color: #58cffa;
-    border-left: 1px solid #58cffa;
-}
-.mui-segmented-control .mui-control-item:first-child
-{
-    border-left-width: 0;
-}
-.mui-segmented-control .mui-control-item.mui-active
-{
-    color: #fff;
-    background-color: #58cffa;
-}
-.mui-segmented-control.mui-segmented-control-inverted
-{
-    width: 100%;
-
-    border: 0;
-    border-radius: 0;
-}
 .mui-segmented-control.mui-segmented-control-inverted.mui-segmented-control-vertical .mui-control-item
 {
     border-bottom: 1px solid #c8c7cc;
@@ -3013,17 +2867,6 @@ select:focus
 .mui-segmented-control.mui-segmented-control-inverted.mui-segmented-control-vertical .mui-control-item.mui-active
 {
     border-bottom: 1px solid #c8c7cc;
-}
-.mui-segmented-control.mui-segmented-control-inverted .mui-control-item
-{
-    color: inherit;
-    border: 0;
-}
-.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active
-{
-    color: #58cffa;
-    border-bottom: 2px solid #58cffa;
-    background: none;
 }
 .mui-segmented-control.mui-segmented-control-inverted ~ .mui-slider-progress-bar
 {
@@ -5097,9 +4940,9 @@ body > .mui-progressbar
     border: 0;
 }
 body,html{overflow: hidden;}
-body,html,.rs-layout{height: 100%;}
-.rs-layout{display:flex;display:-webkit-flex;margin:0 auto; flex-direction:column;}
+body,html,.mui-layout{height: 100%;}
+.mui-layout{display:flex;display:-webkit-flex;margin:0 auto; flex-direction:column;}
 .mui-content{ overflow: auto;width: 100%;flex:1;}
-.rs-layout-bottom{ height: calc(100% - 50px);}
-.rs-layout-bottomtop{ height: calc(100% - 50px); padding-top: 44px;}
-.rs-layout-top{ padding-top: 44px;}
+.mui-layout-bottom{ height: calc(100% - 50px);}
+.mui-layout-bottomtop{ height: calc(100% - 50px); padding-top: 44px;}
+.mui-layout-top{ padding-top: 44px;}

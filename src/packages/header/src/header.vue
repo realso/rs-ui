@@ -66,25 +66,34 @@ export default {
       @descendent white {
         color: #333;
         background: #fff;
-        a{
+        a,.rs-btn-link{
           color: #333;
           line-height:44px;
+        }
+        .rs-btn-link{
+          padding: 0 5px;
         }
       }
       @descendent primary {
         color: #fff;
         background: #58cffa;
-        a{
+        a,.rs-btn-link{
           color: #fff;
           line-height:44px;
+        }
+        .rs-btn-link{
+          padding: 0 5px;
         }
       }
       @descendent blue {
         color: #fff;
         background: #29b1e8;
-        a{
+        a,.rs-btn-link{
           color: #fff;
           line-height:44px;
+        }
+        .rs-btn-link{
+          padding: 0 5px;
         }
       }
       @descendent transparent {
@@ -94,6 +103,10 @@ export default {
       }
       @descendent left {
         float: left;
+        height: 44px;
+      }
+      @descendent right {
+        float: right;
         height: 44px;
       }
       @descendent title {

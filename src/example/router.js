@@ -9,7 +9,9 @@ import lazyload from './lazyload/lazyload'
 import listItem from './listItem/listItem'
 import loadmoredown from './loadmore/loadmoredown'
 import loadmoreup from './loadmore/loadmoreup'
+import messageBox from './message-box/message-box'
 import navbar from './navbar/navbar'
+import tabbar from './tabbar/tabbar'
 
 Vue.use(Router)
 
@@ -61,9 +63,19 @@ export default new Router({
           component: loadmoreup
         },
         {
+          path: '/messageBox',
+          name: 'messageBox',
+          component: messageBox
+        },
+        {
           path: '/navbar',
           name: 'navbar',
           component: navbar
+        },
+        {
+          path: '/tabbar',
+          name: 'tabbar',
+          component: tabbar
         }
     ]
 })

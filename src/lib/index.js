@@ -20,6 +20,7 @@ import Search from '../packages/search'
 import Tip from '../packages/tip'
 // import InfiniteScroll from '../packages/infinite-scroll';
 import Lazyload from '../packages/lazyload'
+import NumInput from '../packages/numInput'
 // import Toast from '../packages/toast';
 // import Indicator from '../packages/indicator';
 import merge from '../utils/merge'
@@ -47,6 +48,7 @@ const install = function(Vue, config = {}) {
     Vue.component(Popup.name, Popup)
     Vue.component(Search.name, Search)
     Vue.component(Tip.name, Tip)
+    Vue.component(NumInput.name, NumInput)
         // Vue.component(MessageBox.name, MessageBox)
         // Vue.use(InfiniteScroll);
     Vue.use(Lazyload, merge({
@@ -89,6 +91,7 @@ export default {
     MessageBox,
     Search,
     Tip,
+    NumInput,
     // InfiniteScroll
     Lazyload
 }
