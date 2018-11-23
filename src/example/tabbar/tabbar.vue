@@ -25,6 +25,7 @@
         <rs-tab-container v-model="selected">
           <rs-tab-container-item id="工作台">
             工作台
+            <rs-numInput height='24' :value.sync="mlex" size='14' :text.sync="text" v-on:text1="text1"></rs-numInput>
           </rs-tab-container-item>
           <rs-tab-container-item id="报表查询">
             <rs-numInput height='24' :value.sync="mlex" size='14'></rs-numInput>
@@ -48,10 +49,14 @@ export default {
     data (){
       return {
         selected: '工作台',
-        mlex: 0
+        mlex: 10,
+        text: '10.00'
       }
     },
     methods:{
+      text1(val) {
+        this.text=parseFloat(val).toFixed(2)
+      }
     }
 }
 </script>

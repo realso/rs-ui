@@ -1,10 +1,10 @@
 <template>
   <div class="rs-numInput" :style="{'height':height+'px','lineHeight':height+'px','fontSize':size+'px'}">
     <input ref="input" :style="{'opacity':ISINPUTSHOW==false ? '0':'1','lineHeight':height+'px','fontSize':size+'px'}" 
-      @focus="ISINPUTSHOW=true" 
+      @focus="ISINPUTSHOW=true,$event.target.select()" 
       @blur="ISINPUTSHOW=false" class="rs-numInput-input" 
       v-model="currentValue" />
-    <div v-show="ISINPUTSHOW==false" class="rs-numInput-label">{{ parseFloat(currentValue).toFixed(2)}}</div>
+    <div v-if="ISINPUTSHOW==false" class="rs-numInput-label">{{text}}</div>
   </div>
 </template>
 
@@ -15,7 +15,8 @@
  * @param height {string} [height='24'] - 输入框的高度
  * @param size {string} [size='14'] - 尺寸，默认14
  * @param value {string} [:value.sync='mxzl'] - 绑定的字段
- *
+ * @param text {string} [:text='parseFloat(currentValue).toFixed(2)'] - 显示的表现方式
+
  * @example
  * <rs-numInput height='24' model=mlex size='14'></rs-numInput>
  */
@@ -29,19 +30,22 @@ export default {
   },
   watch: {
     currentValue(val) {
+      this.$emit('text1', this.currentValue)
       this.$emit('input', val);
     },
     value(val) {
       this.currentValue = val;
+      this.$emit('text1', this.currentValue)
     }
-  },
+  }, 
   props: {
     height: String,
     size: {
       type: String,
       default: '14'
     },
-    value: String
+    value: String,
+    text: String
   }
 }
 </script>
