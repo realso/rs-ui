@@ -42,5 +42,9 @@
   {
     "path": "/tabbar",
     "name": "底部选项卡tabbar"
+  },
+  {
+    "path": "/picker",
+    "name": "选择picker"
   }
 ]

@@ -70,10 +70,6 @@
 
 <script type="text/babel">
 import Popup from '../../../utils/popup'
-import Vue from 'vue'
-if (!Vue.prototype.$isServer) {
-  require('../../../style/popup.css')
-}
 export default {
   name: 'rs-popup',
   mixins: [Popup],

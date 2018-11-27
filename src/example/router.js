@@ -12,6 +12,7 @@ import loadmoreup from './loadmore/loadmoreup'
 import messageBox from './message-box/message-box'
 import navbar from './navbar/navbar'
 import tabbar from './tabbar/tabbar'
+import picker from './picker/picker'
 
 Vue.use(Router)
 
@@ -76,6 +77,11 @@ export default new Router({
           path: '/tabbar',
           name: 'tabbar',
           component: tabbar
+        },
+        {
+          path: '/picker',
+          name: 'picker',
+          component: picker
         }
     ]
 })

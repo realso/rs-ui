@@ -1,10 +1,11 @@
 <template>
   <div class="rs-numInput" :style="{'height':height+'px','lineHeight':height+'px','fontSize':size+'px'}">
     <input ref="input" :style="{'opacity':ISINPUTSHOW==false ? '0':'1','lineHeight':height+'px','fontSize':size+'px'}" 
-      @focus="ISINPUTSHOW=true,$event.target.select()" 
-      @blur="ISINPUTSHOW=false" class="rs-numInput-input" 
+      @click="ISINPUTSHOW=true,$event.target.select()" 
+       class="rs-numInput-input"
+      @blur="change" 
       v-model="currentValue" />
-    <div v-if="ISINPUTSHOW==false" class="rs-numInput-label">{{text}}</div>
+    <div v-show="ISINPUTSHOW==false" class="rs-numInput-label">{{text}}</div>
   </div>
 </template>
 
@@ -28,16 +29,6 @@ export default {
       currentValue: this.value
     }
   },
-  watch: {
-    currentValue(val) {
-      this.$emit('text1', this.currentValue)
-      this.$emit('input', val);
-    },
-    value(val) {
-      this.currentValue = val;
-      this.$emit('text1', this.currentValue)
-    }
-  }, 
   props: {
     height: String,
     size: {
@@ -46,6 +37,12 @@ export default {
     },
     value: String,
     text: String
+  },
+  methods: {
+    change() {
+      this.ISINPUTSHOW=false
+      this.$emit('input', this.currentValue)
+    }
   }
 }
 </script>

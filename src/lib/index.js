@@ -15,13 +15,15 @@ import Grid from '../packages/grid'
 import GridItem from '../packages/grid-item'
 import Card from '../packages/card'
 import Popup from '../packages/popup'
+import Picker from '../packages/picker'
 import MessageBox from '../packages/message-box'
 import Search from '../packages/search'
 import Tip from '../packages/tip'
+import Datetime from '../packages/datetime'
 // import InfiniteScroll from '../packages/infinite-scroll';
 import Lazyload from '../packages/lazyload'
 import NumInput from '../packages/numInput'
-// import Toast from '../packages/toast';
+import Toast from '../packages/toast'
 // import Indicator from '../packages/indicator';
 import merge from '../utils/merge'
 
@@ -34,7 +36,7 @@ const install = function(Vue, config = {}) {
     Vue.component(NavItem.name, NavItem)
     Vue.component(Navbar.name, Navbar)
     Vue.component(Tabbar.name, Tabbar)
-    Vue.component(Button.name, Button)
+    Vue.component(Button.name, Button) 
     Vue.component(Tabcontainer.name, Tabcontainer)
     Vue.component(Tabcontaineritem.name, Tabcontaineritem)
     Vue.component(Spinner.name, Spinner)
@@ -46,10 +48,12 @@ const install = function(Vue, config = {}) {
     Vue.component(GridItem.name, GridItem)
     Vue.component(Card.name, Card)
     Vue.component(Popup.name, Popup)
+    Vue.component(Picker.name, Picker)
     Vue.component(Search.name, Search)
     Vue.component(Tip.name, Tip)
+    Vue.component(Datetime.name, Datetime)
     Vue.component(NumInput.name, NumInput)
-        // Vue.component(MessageBox.name, MessageBox)
+    
         // Vue.use(InfiniteScroll);
     Vue.use(Lazyload, merge({
         loading: require('../assets/loading-spin.svg'),
@@ -57,7 +61,7 @@ const install = function(Vue, config = {}) {
     }, config.lazyload))
 
     Vue.$messagebox = Vue.prototype.$messagebox = MessageBox
-        // Vue.$toast = Vue.prototype.$toast = Toast;
+    Vue.$toast = Vue.prototype.$toast = Toast;
         // Vue.$indicator = Vue.prototype.$indicator = Indicator;
 }
 
@@ -86,11 +90,13 @@ export default {
     GridItem,
     Card,
     Popup,
+    Picker,
     // Toast,
     // Indicator,
     MessageBox,
     Search,
     Tip,
+    Datetime,
     NumInput,
     // InfiniteScroll
     Lazyload
