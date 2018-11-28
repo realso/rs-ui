@@ -9,6 +9,7 @@
       <rs-button @click.native="openIndicatorWithSpinner" size="large">可配置 spinner</rs-button>
       <rs-button @click.native="openIndicatorWithText" size="large">点击弹出带有文字的 Indicator</rs-button>
     </div>
+    </div>
   </div>
 </template>
 
