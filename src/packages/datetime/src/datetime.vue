@@ -1,6 +1,6 @@
 <template>
   <rs-popup v-model="visible" :closeOnClickModal="closeOnClickModal" position="bottom" class="rs-datetime">
-    <mt-picker
+    <rs-picker
       :slots="dateSlots"
       @change="onChange"
       :visible-item-count="visibleItemCount"
@@ -9,7 +9,7 @@
       show-toolbar>
       <span class="rs-datetime-action rs-datetime-cancel" @click="visible = false;$emit('cancel')">{{ cancelText }}</span>
       <span class="rs-datetime-action rs-datetime-confirm" @click="confirm">{{ confirmText }}</span>
-    </mt-picker>
+    </rs-picker>
   </rs-popup>
 </template>
 
@@ -43,10 +43,9 @@
 </style>
 
 <script type="text/babel">
-  import { Picker } from 'mint-ui';
+  import Picker from '../../picker';
   import popup from '../../popup';
   import Vue from 'vue';
-  Vue.component(Picker.name, Picker);
   const FORMAT_MAP = {
     Y: 'year',
     M: 'month',
@@ -138,6 +137,7 @@
       };
     },
     components: {
+      'rs-picker': Picker,
       'rs-popup': popup
     },
     methods: {
@@ -273,13 +273,7 @@
       },
       setSlotsByValues(values) {
         const setSlotValue = this.$refs.picker.setSlotValue;
-        console.log(this.$refs.picker)
-        console.log(this.$refs.picker.$children)
-        console.log(setSlotValue)
-        console.log(this.type)
-        console.log(values[0])
         if (this.type === 'time') {
-          debugger;
           setSlotValue(0, values[0]);
           setSlotValue(1, values[1]);
         }

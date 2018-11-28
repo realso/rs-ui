@@ -13,6 +13,8 @@ import messageBox from './message-box/message-box'
 import navbar from './navbar/navbar'
 import tabbar from './tabbar/tabbar'
 import picker from './picker/picker'
+import datetime from './datetime/datetime'
+import indicator from './indicator/indicator'
 
 Vue.use(Router)
 
@@ -82,6 +84,16 @@ export default new Router({
           path: '/picker',
           name: 'picker',
           component: picker
+        },
+        {
+          path: '/datetime',
+          name: 'datetime',
+          component: datetime
+        },
+        {
+          path: '/indicator',
+          name: 'indicator',
+          component: indicator
         }
     ]
 })
