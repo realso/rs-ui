@@ -24,7 +24,7 @@ import Datetime from '../packages/datetime'
 import Lazyload from '../packages/lazyload'
 import NumInput from '../packages/numInput'
 import Toast from '../packages/toast'
-// import Indicator from '../packages/indicator';
+import Indicator from '../packages/indicator'
 import merge from '../utils/merge'
 
 const version = '1.0.18'
@@ -61,8 +61,8 @@ const install = function(Vue, config = {}) {
     }, config.lazyload))
 
     Vue.$messagebox = Vue.prototype.$messagebox = MessageBox
-    Vue.$toast = Vue.prototype.$toast = Toast;
-        // Vue.$indicator = Vue.prototype.$indicator = Indicator;
+    Vue.$toast = Vue.prototype.$toast = Toast
+    Vue.$indicator = Vue.prototype.$indicator = Indicator;
 }
 
 // auto install
@@ -91,8 +91,8 @@ export default {
     Card,
     Popup,
     Picker,
-    // Toast,
-    // Indicator,
+    Toast,
+    Indicator,
     MessageBox,
     Search,
     Tip,

@@ -46,5 +46,13 @@
   {
     "path": "/picker",
     "name": "选择picker"
+  },
+  {
+    "path": "/datetime",
+    "name": "日期时间选择datetime"
+  },
+  {
+    "path": "/indicator",
+    "name": "indicator"
   }
 ]

@@ -26,49 +26,10 @@
           <rs-tab-container-item id="工作台">
             工作台
             <rs-numInput height='24' v-model.lazy="mlex" :text="mlex|toFixed(2)" size='14'></rs-numInput>
-            <rs-numInput height='24' :value.sync="mlex" size='14' :text="mlex|toFixed(2)"></rs-numInput>
+            <rs-numInput height='24' v-model.lazy="mlex" size='14' :text="mlex|toFixed(2)"></rs-numInput>
           </rs-tab-container-item>
           <rs-tab-container-item id="报表查询">
-            <rs-numInput height='24' v-model.lazy="mlex" :text="mlex|toFixed(2)" size='14'></rs-numInput>
-            <rs-button @click.native="open('picker1')" size="large">点击弹出 DateTime Picker</rs-button>
-            <rs-button @click.native="open('picker2')" size="large">点击弹出 Date Picker</rs-button>
-            <rs-button @click.native="open('picker3')" size="large">点击弹出 Time Picker</rs-button>
-            <rs-button @click.native="open('picker4')" size="large">自定义模板</rs-button>
-            <rs-button @click.native="open('picker5')" size="large">设定初始值</rs-button>
-            <rs-datetime
-              ref="picker1"
-              v-model="value"
-              :closeOnClickModal="false"
-              @visible-change="handleVisibleChange"
-              @confirm="handleChange">
-            </rs-datetime>
-            <rs-datetime
-              ref="picker2"
-              type="date"
-              v-model="value2"
-              @confirm="handleChange">
-            </rs-datetime>
-            <rs-datetime
-              ref="picker3"
-              type="time"
-              v-model="value3"
-              @confirm="handleChange">
-            </rs-datetime>
-            <rs-datetime
-              ref="picker4"
-              type="date"
-              v-model="value4"
-              year-format="{value} 年"
-              month-format="{value} 月"
-              date-format="{value} 日"
-              @confirm="handleChange">
-            </rs-datetime>
-            <rs-datetime
-              ref="picker5"
-              type="time"
-              v-model="value5"
-              @confirm="handleChange">
-            </rs-datetime>
+            <rs-numInput height='24' v-model.lazy="mlex" :text="mlex|toFixed(2)" size='14'></rs-numInput> 
           </rs-tab-container-item>
         </rs-tab-container>
         <rs-tabbar v-model="selected">
@@ -90,17 +51,7 @@ export default {
       return {
         selected: '工作台',
         mlex: 10,
-        text: '10.00',
-        value: null,
-        value2: null,
-        value3: null,
-        value4: null,
-        value5: '04:32',
-        visible: false,
-        visible2: false,
-        visible3: false,
-        visible4: false,
-        visible5: false
+        text: '10.00'
       }
     },
     filters: {
@@ -111,18 +62,6 @@ export default {
     methods:{
       text1(val) {
         this.text=parseFloat(val).toFixed(2)
-      },
-      open(picker) {
-        this.$refs[picker].open();
-      },
-      handleChange(value) {
-        this.$toast({
-          message: '已选择 ' + value.toString(),
-          position: 'bottom'
-        });
-      },
-      handleVisibleChange(isVisible) {
-        console.log('弹窗是否展示:', isVisible);
       }
     }
 }
