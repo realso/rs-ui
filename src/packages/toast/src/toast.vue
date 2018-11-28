@@ -54,7 +54,7 @@
       position: fixed;
       max-width: 80%;
       border-radius: 5px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.5);
       color: #fff;
       box-sizing: border-box;
       text-align: center;
