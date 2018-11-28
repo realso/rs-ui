@@ -25,9 +25,18 @@ export default {
   name: 'rs-numInput',
   data () {
     return {
-      ISINPUTSHOW: false,
-      currentValue: this.value
+      ISINPUTSHOW: false
     }
+  },
+  computed:{
+      currentValue:{
+        get(){
+          return this.value;
+        },
+        set(v){
+          this.value = v;
+        }
+      }
   },
   props: {
     height: String,
