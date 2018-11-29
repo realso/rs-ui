@@ -173,7 +173,8 @@
         let value;
         if (this.type === 'time') {
           value = values.map(value => ('0' + this.getTrueValue(value)).slice(-2)).join(':');
-        } else {
+        }
+        else {
           let year = this.getTrueValue(values[0]);
           let month = this.getTrueValue(values[1]);
           let date = this.getTrueValue(values[2]);
@@ -330,9 +331,29 @@
         }
         return value.getMinutes();
       },
+      _getFormatValue() {
+          let value = this.currentValue;
+          let year = this.getYear(value);
+          let month =  ('0' + this.getMonth(value)).slice(-2);
+          let date = ('0' + this.getDate(value)).slice(-2); 
+          let hour = ('0' + this.getHour(value)).slice(-2);
+          let minute = ('0' + this.getMinute(value)).slice(-2); 
+          let ret = value;
+          if (this.type === 'date') {
+            ret = `${year}-${month}-${date}`
+          }
+          if (this.type === 'datetime') {
+             ret = `${year}-${month}-${date} ${hour}:${minute}`
+          }
+          if (this.type === 'time') {
+             ret = `${hour}:${minute}`
+          }
+          return ret;
+      },
       confirm() {
         this.visible = false;
-        this.$emit('confirm', this.currentValue);
+        this.$emit('input', this._getFormatValue(this.currentValue));
+        this.$emit('confirm', this._getFormatValue(this.currentValue));;
       },
       handleValueChange() {
         this.$emit('input', this.currentValue);
