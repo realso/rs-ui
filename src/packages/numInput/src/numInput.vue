@@ -1,6 +1,6 @@
 <template>
   <div class="rs-numInput" :style="{'height':height+'px','lineHeight':height+'px','fontSize':size+'px'}">
-    <input ref="input" :style="{'opacity':ISINPUTSHOW==false ? '0':'1','lineHeight':height+'px','fontSize':size+'px'}" 
+    <input :type="nativeType" ref="input" :style="{'opacity':ISINPUTSHOW==false ? '0':'1','lineHeight':height+'px','fontSize':size+'px'}" 
       @click="ISINPUTSHOW=true,$event.target.select()" 
        class="rs-numInput-input"
       @blur="change" 
@@ -15,6 +15,7 @@
  * @desc 按钮
  * @param height {string} [height='24'] - 输入框的高度
  * @param size {string} [size='14'] - 尺寸，默认14
+ * @param nativeType {string} [nativeType='number'] - 输入框的类型，默认number
  * @param value {string} [:value.sync='mxzl'] - 绑定的字段
  * @param text {string} [:text='parseFloat(currentValue).toFixed(2)'] - 显示的表现方式
 
@@ -39,13 +40,20 @@ export default {
       }
   },
   props: {
-    height: String,
+    height: {
+      type: String,
+      default: '24'
+    },
     size: {
       type: String,
       default: '14'
     },
     value: String,
-    text: String
+    text: String,
+    nativeType: {
+      type: String,
+      default: 'number'
+    }
   },
   methods: {
     change() {
@@ -67,13 +75,13 @@ export default {
         top: 0; 
         left: 0;
         width: 100%; 
-        border: none; 
-        height: 100%; 
-        padding: 0; 
+        border: none !important; 
+        height: 100% !important; 
+        padding: 0 !important; 
         text-align: right; 
         font-size: 14px;
         margin: 0;
-        background: none;
+        background: none !important;
       }
       @descendent label {
         height: 100%;

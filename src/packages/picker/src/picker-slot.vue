@@ -1,14 +1,13 @@
 <template>
   <div class="picker-slot" :class="classNames" :style="flexStyle">
     <div v-if="!divider" ref="wrapper" class="picker-slot-wrapper" :class="{ dragging: dragging }" :style="{ height: contentHeight + 'px' }">
-      <div class="picker-item" v-for="itemValue in mutatingValues" :key="itemValue.id" :class="{ 'picker-selected': itemValue === currentValue }" :style="{ height: itemHeight + 'px', lineHeight: itemHeight + 'px' }">
+      <div class="picker-item" v-for="(itemValue,index) in mutatingValues" :key="index" :class="{ 'picker-selected': itemValue === currentValue }" :style="{ height: itemHeight + 'px', lineHeight: itemHeight + 'px' }">
         {{ typeof itemValue === 'object' && itemValue[valueKey] ? itemValue[valueKey] : itemValue }}
       </div>
     </div>
     <div v-if="divider">{{ content }}</div>
   </div>
 </template>
-
 <style>
   .picker-slot {
     font-size: 18px;

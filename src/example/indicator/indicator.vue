@@ -21,7 +21,7 @@
         setTimeout(() => this.$indicator.close(), 2000);
       },
       openIndicatorWithSpinner() {
-        this.$indicator.open({ spinnerType: 'fading-circle' });
+        this.$indicator.open({ spinnerType: 'fading-circle',text: '说啥呢' });
         setTimeout(() => this.$indicator.close(), 2000);
       },
       openIndicatorWithText() {

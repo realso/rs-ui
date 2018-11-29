@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="postcss">
 @component-namespace rs-spinner {
   @component fading-circle {
     position: relative;

@@ -48,11 +48,19 @@
     "name": "选择picker"
   },
   {
+    "path": "/spinner",
+    "name": "spinner"
+  },
+  {
     "path": "/datetime",
     "name": "日期时间选择datetime"
   },
   {
     "path": "/indicator",
     "name": "indicator"
+  },
+  {
+    "path": "/numInput",
+    "name": "输入框转换numInput"
   }
 ]

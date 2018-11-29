@@ -3,6 +3,27 @@
 </template>
 
 <script>
+/**
+ * rs-spinner
+ * @module components/spinner
+ * @desc 加载动画
+ * @param {(string|number)} [type=snake] - 显示类型，传入类型名或者类型 id，可选 `snake`, `dobule-bounce`, `triple-bounce`, `fading-circle`
+ * @param {number} size - 尺寸
+ * @param {string} color - 颜色
+ *
+ * @example
+ * <rs-spinner type="snake"><rs-spinner>
+ *
+ * <!-- double-bounce -->
+ * <rs-spinner :type="1"></rs-spinner>
+ *
+ * <!-- default snake -->
+ * <rs-spinner :size="30" color="#999"></rs-spinner>
+ */
+import snake from './spinner/snake.vue'
+import SpinnerDoubleBounce from './spinner/double-bounce.vue'
+import SpinnerTripleBounce from './spinner/triple-bounce.vue'
+import SpinnerFadingCircle from './spinner/fading-circle.vue'
 const SPINNERS = [
   'snake',
   'double-bounce',
@@ -23,23 +44,7 @@ const parseSpinner = function (index) {
   }
   return index
 }
-/**
- * rs-spinner
- * @module components/spinner
- * @desc 加载动画
- * @param {(string|number)} [type=snake] - 显示类型，传入类型名或者类型 id，可选 `snake`, `dobule-bounce`, `triple-bounce`, `fading-circle`
- * @param {number} size - 尺寸
- * @param {string} color - 颜色
- *
- * @example
- * <rs-spinner type="snake"><rs-spinner>
- *
- * <!-- double-bounce -->
- * <rs-spinner :type="1"></rs-spinner>
- *
- * <!-- default snake -->
- * <rs-spinner :size="30" color="#999"></rs-spinner>
- */
+
 export default {
   name: 'rs-spinner',
   computed: {
@@ -48,10 +53,10 @@ export default {
     }
   },
   components: {
-    SpinnerSnake: require('./spinner/snake.vue'),
-    SpinnerDoubleBounce: require('./spinner/double-bounce.vue'),
-    SpinnerTripleBounce: require('./spinner/triple-bounce.vue'),
-    SpinnerFadingCircle: require('./spinner/fading-circle.vue')
+    SpinnerSnake: snake,
+    SpinnerDoubleBounce: SpinnerDoubleBounce,
+    SpinnerTripleBounce: SpinnerTripleBounce,
+    SpinnerFadingCircle: SpinnerFadingCircle
   },
   props: {
     type: {

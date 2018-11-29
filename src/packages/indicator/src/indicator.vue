@@ -18,7 +18,7 @@
       position: fixed 50% * * 50%;
       transform: translate(-50%, -50%);
       border-radius: 5px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.5);
       color: white;
       box-sizing: border-box;
       text-align: center;

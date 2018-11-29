@@ -13,8 +13,10 @@ import messageBox from './message-box/message-box'
 import navbar from './navbar/navbar'
 import tabbar from './tabbar/tabbar'
 import picker from './picker/picker'
+import spinner from './spinner/spinner'
 import datetime from './datetime/datetime'
 import indicator from './indicator/indicator'
+import numInput from './numInput/numInput'
 
 Vue.use(Router)
 
@@ -91,9 +93,20 @@ export default new Router({
           component: datetime
         },
         {
+          path: '/spinner',
+          name: 'spinner',
+          component: spinner
+        },
+        {
           path: '/indicator',
           name: 'indicator',
           component: indicator
+        },
+        {
+          path: '/numInput',
+          name: 'numInput',
+          component: numInput
         }
+        
     ]
 })

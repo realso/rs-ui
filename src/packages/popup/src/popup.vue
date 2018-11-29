@@ -70,56 +70,60 @@
 
 <script type="text/babel">
 import Popup from '../../../utils/popup'
+import Vue from 'vue'
+  if (!Vue.prototype.$isServer) {
+    require('../../../style/popup.css');
+  }
 export default {
   name: 'rs-popup',
   mixins: [Popup],
-  props: {
-    modal: {
-      default: true
+    props: {
+      modal: {
+        default: true
+      },
+      modalFade: {
+        default: false
+      },
+      lockScroll: {
+        default: false
+      },
+      closeOnClickModal: {
+        default: true
+      },
+      popupTransition: {
+        type: String,
+        default: 'popup-slide'
+      },
+      position: {
+        type: String,
+        default: ''
+      }
     },
-    modalFade: {
-      default: false
+    data() {
+      return {
+        currentValue: false,
+        currentTransition: this.popupTransition
+      };
     },
-    lockScroll: {
-      default: false
+    watch: {
+      currentValue(val) {
+        this.$emit('input', val);
+      },
+      value(val) {
+        this.currentValue = val;
+      }
     },
-    closeOnClickModal: {
-      default: true
+    beforeMount() {
+      if (this.popupTransition !== 'popup-fade') {
+        this.currentTransition = `popup-slide-${ this.position }`;
+      }
     },
-    popupTransition: {
-      type: String,
-      default: 'popup-slide'
-    },
-    position: {
-      type: String,
-      default: ''
+    mounted() {
+      if (this.value) {
+        this.rendered = true;
+        this.currentValue = true;
+        this.open();
+      }
     }
-  },
-  data () {
-    return {
-      currentValue: false,
-      currentTransition: this.popupTransition
-    }
-  },
-  watch: {
-    currentValue (val) {
-      this.$emit('input', val)
-    },
-    value (val) {
-      this.currentValue = val
-    }
-  },
-  beforeMount () {
-    if (this.popupTransition !== 'popup-fade') {
-      this.currentTransition = `popup-slide-${this.position}`
-    }
-  },
-  mounted () {
-    if (this.value) {
-      this.rendered = true
-      this.currentValue = true
-      this.open()
-    }
-  }
-}
+  };
 </script>

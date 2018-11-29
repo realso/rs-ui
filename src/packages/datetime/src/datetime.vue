@@ -30,7 +30,7 @@
         text-align: center;
         line-height: 40px;
         font-size: 16px;
-        color: #eaeaea;
+        color: #26a2ff;
       }
       @descendent cancel {
         float: left;
@@ -43,7 +43,7 @@
 </style>
 
 <script type="text/babel">
-  import Picker from '../../picker';
+  import picker from '../../picker';
   import popup from '../../popup';
   import Vue from 'vue';
   const FORMAT_MAP = {
@@ -137,7 +137,7 @@
       };
     },
     components: {
-      'rs-picker': Picker,
+      'rs-picker': picker,
       'rs-popup': popup
     },
     methods: {
@@ -196,7 +196,7 @@
         }
         if (values.length !== 0) {
           this.currentValue = this.getValue(values);
-          this.handleValueChange();
+          // this.handleValueChange();
         }
       },
       fillValues(type, start, end) {

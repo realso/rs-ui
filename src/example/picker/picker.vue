@@ -1,46 +1,34 @@
 <template>
-  <div class="page-picker">
-    <h1 class="page-title">Picker</h1>
-    <div class="page-picker-wrapper">
-      <rs-picker :slots="yearSlot" @change="onYearChange" :visible-item-count="3"></rs-picker>
-    </div>
-    <p class="page-picker-desc">出生年份: {{ year }}</p>
+  <div class="mui-layout mui-layout-top">
+    <rs-header title="选择picker" color="primary">
+      <a slot="left" class="mui-icon mui-icon-left-nav" href="/"></a>
+    </rs-header>
+  	<div class="mui-content">
+      <div class="mui-content-padded">
+        <div class="page-picker-wrapper">
+          <rs-picker :slots="yearSlot" @change="onYearChange" :visible-item-count="3"></rs-picker>
+        </div>
+        <p class="page-picker-desc">出生年份: {{ year }}</p>
 
-    <div class="page-picker-wrapper">
-      <rs-picker :slots="dateSlots" @change="onDateChange" :visible-item-count="3"></rs-picker>
-    </div>
-    <p class="page-picker-desc">在校时间: {{ dateStart }} 至 {{ dateEnd }}</p>
+        <div class="page-picker-wrapper">
+          <rs-picker :slots="dateSlots" @change="onDateChange" :visible-item-count="3"></rs-picker>
+        </div>
+        <p class="page-picker-desc">在校时间: {{ dateStart }} 至 {{ dateEnd }}</p>
 
-    <div class="page-picker-wrapper">
-      <rs-picker :slots="addressSlots" @change="onAddressChange" :visible-item-count="5"></rs-picker>
-    </div>
-    <p class="page-picker-desc">地址: {{ addressProvince }} {{ addressCity }}</p>
-    
-    <!-- defaultIndex 参数变化 -->
-    <div class="page-picker-wrapper">
-      <rs-picker :slots="numberSlot" @change="onNumberChange" :visible-item-count="3"></rs-picker>
-    </div>
-    <p class="page-picker-desc">动态默认选项: {{ number }}</p>
+        <div class="page-picker-wrapper">
+          <rs-picker :slots="addressSlots" @change="onAddressChange" :visible-item-count="5"></rs-picker>
+        </div>
+        <p class="page-picker-desc">地址: {{ addressProvince }} {{ addressCity }}</p>
+        
+        <!-- defaultIndex 参数变化 -->
+        <div class="page-picker-wrapper">
+          <rs-picker :slots="numberSlot" @change="onNumberChange" :visible-item-count="3"></rs-picker>
+        </div>
+        <p class="page-picker-desc">动态默认选项: {{ number }}</p>
+      </div>
+    </div>    
   </div>
 </template>
-
-<style lang="postcss">
-  @component-namespace page {
-    @component picker {
-      padding: 0 10px 20px;
-      @descendent wrapper {
-        background-color: #fff;
-        text-align: center;
-      }
-      @descendent desc {
-        margin: 10px 0 50px;
-      }
-      .mint-button {
-        margin-top: 15px;
-      }
-    }
-  }
-</style>
 
 <script type="text/babel">
   const address = {

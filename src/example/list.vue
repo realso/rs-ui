@@ -1,5 +1,5 @@
 <template>
-	<div class="rs-layout">
+	<div class="mui-layout">
     <div class="mui-content">
       <rs-list size="15">
         <rs-list-item v-for="(item, index) in navs" isright :key="index" @click.native="moveTo(item.path)">
