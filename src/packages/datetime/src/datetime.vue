@@ -333,19 +333,20 @@
       },
       _getFormatValue() {
           let value = this.currentValue;
-          let year = this.getYear(value);
-          let month =  ('0' + this.getMonth(value)).slice(-2);
-          let date = ('0' + this.getDate(value)).slice(-2); 
           let hour = ('0' + this.getHour(value)).slice(-2);
           let minute = ('0' + this.getMinute(value)).slice(-2); 
-          let ret = value;
-          if (this.type === 'date') {
-            ret = `${year}-${month}-${date}`
-          }
-          if (this.type === 'datetime') {
-             ret = `${year}-${month}-${date} ${hour}:${minute}`
-          }
-          if (this.type === 'time') {
+          if (this.type !== 'time') {
+              let year = this.getYear(value);
+              let month =  ('0' + this.getMonth(value)).slice(-2);
+              let date = ('0' + this.getDate(value)).slice(-2); 
+              let ret = value;
+              if (this.type === 'date') {
+                ret = `${year}-${month}-${date}`
+              }
+              if (this.type === 'datetime') {
+                ret = `${year}-${month}-${date} ${hour}:${minute}`
+              }
+          }else{
              ret = `${hour}:${minute}`
           }
           return ret;
