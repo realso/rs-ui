@@ -76,7 +76,7 @@
           </pre>
         </h5>
         <rs-list size="14">
-          <rs-medialist-item isright>
+          <rs-medialist-item isright noborder>
             <img slot="left" src="http://fuss10.elemecdn.com/b/18/0678e57cb1b226c04888e7f244c20jpeg.jpeg">
             幸福
             <p class="mui-ellipsis" style="margin-bottom:0">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
