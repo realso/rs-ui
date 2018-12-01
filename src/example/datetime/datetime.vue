@@ -116,7 +116,7 @@ export default {
         text: '10.00',
         value: '2018-12-11',
         value2: '2018-12-11',
-        value3: '2018-12-11',
+        value3: '04:32',
         value4: '2018-12-11',
         value6: new Date('2018-12-11'),
         value5: '04:32',

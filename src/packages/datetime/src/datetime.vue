@@ -306,7 +306,7 @@
         }
       },
       isDateString(str) {
-        return /\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}/.test(str);
+        return /\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}/.test(str)||(this.type === 'time'&&typeof(str)==="string");;
       },
       getYear(value) {
         return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[0] : value.getFullYear();
@@ -319,27 +319,27 @@
       },
       getHour(value) {
         if (this.isDateString(value)) {
-          const str = value.split(' ')[1] || '00:00:00';
+          const str = value || '00:00:00';
           return str.split(':')[0];
         }
         return value.getHours();
       },
       getMinute(value) {
         if (this.isDateString(value)) {
-          const str = value.split(' ')[1] || '00:00:00';
+          const str = value || '00:00:00';
           return str.split(':')[1];
         }
         return value.getMinutes();
       },
       _getFormatValue() {
           let value = this.currentValue;
+          let ret = value;
           let hour = ('0' + this.getHour(value)).slice(-2);
           let minute = ('0' + this.getMinute(value)).slice(-2); 
           if (this.type !== 'time') {
               let year = this.getYear(value);
               let month =  ('0' + this.getMonth(value)).slice(-2);
               let date = ('0' + this.getDate(value)).slice(-2); 
-              let ret = value;
               if (this.type === 'date') {
                 ret = `${year}-${month}-${date}`
               }
