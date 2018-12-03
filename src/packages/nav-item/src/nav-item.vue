@@ -28,7 +28,7 @@ export default {
   @component-namespace rs {
     @component navbar {
       @descendent item {
-        line-height: 38px;
+        line-height: 30px;
         display: table-cell;
         overflow: hidden;
         width: 1%;

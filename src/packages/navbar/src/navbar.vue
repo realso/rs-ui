@@ -51,7 +51,7 @@ export default {
 <style lang="postcss">
   @component-namespace rs {
     @component navbar {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
       position: relative;
       display: table;
@@ -68,6 +68,8 @@ export default {
         border-radius: 0;
         .rs-navbar-item{
           color: inherit;
+          font-size: 15px;
+          line-height: 38px;
           border: 0;
         }
         .rs-navbar-item.is-active{
@@ -152,17 +154,17 @@ export default {
         border:1px solid #fff;
         @when inverted {
           .rs-navbar-item.is-active{
-            color: #333;
+            color: #fff;
             border-bottom: 2px solid #fff;
             background: none;
           }
         }
         .rs-navbar-item{
-          color: #333;
+          color: #fff;
           border-color: inherit;
         }
         .rs-navbar-item.is-active{
-          color: #333;
+          color: #58cffa;
           background-color: #fff;
         }
       }

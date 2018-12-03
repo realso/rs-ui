@@ -70,7 +70,7 @@
             首页
           </rs-nav-item>
         </rs-navbar>  
-        <rs-navbar v-model="selected" inverted color="white">
+        <rs-navbar style="background:#58cffa" inverted color="white" v-model="selected">
           <rs-nav-item id="1">
             首页1
           </rs-nav-item>
