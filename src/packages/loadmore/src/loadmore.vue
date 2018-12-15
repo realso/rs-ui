@@ -39,10 +39,7 @@ export default {
       type: Number,
       default: 2
     },
-    topPullText: {
-      type: String,
-      default: '下拉刷新'
-    },
+    topPullText: String,
     topDropText: {
       type: String,
       default: '释放更新'
@@ -58,10 +55,7 @@ export default {
     topMethod: {
       type: Function
     },
-    bottomPullText: {
-      type: String,
-      default: '上拉刷新'
-    },
+    bottomPullText: String,
     bottomDropText: {
       type: String,
       default: '释放更新'
@@ -322,6 +316,7 @@ export default {
       text-align: center;
       height: 50px;
       line-height: 50px;
+      font-size: 14px;
     }
     @descendent top {
       margin-top: -50px;

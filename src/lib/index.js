@@ -26,6 +26,7 @@ import NumInput from '../packages/numInput'
 import Toast from '../packages/toast'
 import Indicator from '../packages/indicator'
 import merge from '../utils/merge'
+import ImageUpload from '../packages/image-upload'
 
 const version = '1.0.18'
 const install = function(Vue, config = {}) {
@@ -53,7 +54,7 @@ const install = function(Vue, config = {}) {
     Vue.component(Tip.name, Tip)
     Vue.component(Datetime.name, Datetime)
     Vue.component(NumInput.name, NumInput)
-    
+    Vue.component(ImageUpload.name, ImageUpload)
         // Vue.use(InfiniteScroll);
     Vue.use(Lazyload, merge({
         loading: require('../assets/loading-spin.svg'),
@@ -99,5 +100,6 @@ export default {
     Datetime,
     NumInput,
     // InfiniteScroll
-    Lazyload
+    Lazyload,
+    ImageUpload
 }

@@ -62,5 +62,9 @@
   {
     "path": "/numInput",
     "name": "输入框转换numInput"
+  },
+  {
+    "path": "/imageUpload",
+    "name": "图片上传imageUpload"
   }
 ]

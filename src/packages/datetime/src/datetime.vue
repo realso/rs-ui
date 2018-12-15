@@ -244,11 +244,13 @@
       handleExceededValue() {
         let values = [];
         if (this.type === 'time') {
-          const currentValue = this.currentValue.split(':');
-          values = [
-            this.hourFormat.replace('{value}', currentValue[0]),
-            this.minuteFormat.replace('{value}', currentValue[1])
-          ];
+          if(this.currentValue){
+            const currentValue = this.currentValue.split(':');
+            values = [
+              this.hourFormat.replace('{value}', currentValue[0]),
+              this.minuteFormat.replace('{value}', currentValue[1])
+            ];
+          }
         } else {
           values = [
             this.yearFormat.replace('{value}', this.getYear(this.currentValue)),
@@ -395,6 +397,7 @@
     watch: {
       value(val) {
         this.currentValue = val;
+        immediate: true
       },
       rims() {
         this.generateSlots();

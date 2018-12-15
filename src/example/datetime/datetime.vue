@@ -114,9 +114,7 @@ export default {
         selected: '工作台',
         mlex: 10,
         text: '10.00',
-        value: '2018-12-11',
         value2: '2018-12-11',
-        value3: '04:32',
         value4: '2018-12-11',
         value6: new Date('2018-12-11'),
         value5: '04:32',
@@ -130,6 +128,16 @@ export default {
     filters: {
       toFixed(value,cm){
         return parseFloat(value).toFixed(cm)
+      }
+    },
+    computed: {
+      value() {
+        return new Date('2018-12-11')
+      }
+    },
+    watch: {
+      value:function(value1,value2){
+        console.log(value1,value2)
       }
     },
     methods:{

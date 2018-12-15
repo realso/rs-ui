@@ -95,4 +95,5 @@ export default {
     }
   }
 }
+.rs-list li:last-child:after{height: 0;}
 </style>

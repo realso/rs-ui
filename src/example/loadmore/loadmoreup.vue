@@ -5,7 +5,7 @@
     </rs-header>
   	<div class="mui-content">
       <div class="mui-content-padded">
-        <rs-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
+        <rs-loadmore :bottom-method="loadBottom" :auto-fill=false  :bottom-all-loaded="allLoaded" ref="loadmore">
           <rs-list size="15">
             <rs-list-item v-for="(item, index) in list" :key="index">
               {{ item }}
@@ -47,9 +47,6 @@
       }
     },
     methods: {
-      handleBottomChange(status) {
-        this.bottomStatus = status;
-      },
       loadBottom() {
         setTimeout(() => {
           let lastValue = this.list[this.list.length - 1];
@@ -65,7 +62,7 @@
       }
     },
     created() {
-      for (let i = 1; i <= 20; i++) {
+      for (let i = 1; i <= 1; i++) {
         this.list.push(i);
       }
     }

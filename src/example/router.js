@@ -17,6 +17,7 @@ import spinner from './spinner/spinner'
 import datetime from './datetime/datetime'
 import indicator from './indicator/indicator'
 import numInput from './numInput/numInput'
+import imageUpload from './imageUpload/imageUpload'
 
 Vue.use(Router)
 
@@ -106,7 +107,11 @@ export default new Router({
           path: '/numInput',
           name: 'numInput',
           component: numInput
+        },
+        {
+          path: '/imageUpload',
+          name: 'imageUpload',
+          component: imageUpload
         }
-        
     ]
 })
