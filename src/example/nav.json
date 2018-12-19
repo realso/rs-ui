@@ -66,5 +66,9 @@
   {
     "path": "/imageUpload",
     "name": "图片上传imageUpload"
+  },
+  {
+    "path": "/field",
+    "name": "field"
   }
 ]

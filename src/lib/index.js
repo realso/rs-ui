@@ -27,6 +27,7 @@ import Toast from '../packages/toast'
 import Indicator from '../packages/indicator'
 import merge from '../utils/merge'
 import ImageUpload from '../packages/image-upload'
+import Field from '../packages/field'
 
 const version = '1.0.18'
 const install = function(Vue, config = {}) {
@@ -55,6 +56,7 @@ const install = function(Vue, config = {}) {
     Vue.component(Datetime.name, Datetime)
     Vue.component(NumInput.name, NumInput)
     Vue.component(ImageUpload.name, ImageUpload)
+    Vue.component(Field.name, Field)
         // Vue.use(InfiniteScroll);
     Vue.use(Lazyload, merge({
         loading: require('../assets/loading-spin.svg'),
@@ -101,5 +103,6 @@ export default {
     NumInput,
     // InfiniteScroll
     Lazyload,
-    ImageUpload
+    ImageUpload,
+    Field
 }

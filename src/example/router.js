@@ -18,6 +18,7 @@ import datetime from './datetime/datetime'
 import indicator from './indicator/indicator'
 import numInput from './numInput/numInput'
 import imageUpload from './imageUpload/imageUpload'
+import field from './field/field'
 
 Vue.use(Router)
 
@@ -112,6 +113,11 @@ export default new Router({
           path: '/imageUpload',
           name: 'imageUpload',
           component: imageUpload
+        },
+        {
+          path: '/field',
+          name: 'field',
+          component: field
         }
     ]
 })
