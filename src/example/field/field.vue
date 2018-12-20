@@ -13,10 +13,11 @@
             左侧提示：label {string} [label="姓 名"] 文字中间需要加空格<br/>
             左侧提示宽度：width {number} [width=5], 默认为4(单位为em) 可取值3,4,5,6<br/>
             值：text {String}<br/>
+            清除按钮是否存在: isclear {Boolean} 默认无清除按钮，加上isclear为有清除按钮<br/>
             清除按钮的事件：clearClick @clearClick="SNODECODE=''"<br/>
             例如：&lt;rs-field type="label" noborder isright label="经 营 门 店" v-model.lazy='SNODEID' :text='this["SNODEID.SNODECODE"]+ " " +this["SNODEID.SNODENAME"]'&gt;&lt;/rs-field&gt;
         </h5>
-        <h5 style="color:#f00">type="label" 不能输入</h5>
+        <h5 style="color:#f00">type="label" 不能输入，第二个有清除按钮</h5>
         <rs-list size="15" noborder>
             <rs-field
             type="label"
@@ -26,64 +27,24 @@
             :text='this["SNODEID.SNODECODE"]+ " " +this["SNODEID.SNODENAME"]' 
             >
             </rs-field>
-        </rs-list>
-        <h5 style="color:#f00">type="text" 文字输入框</h5>
-        <rs-list size="15" noborder>
             <rs-field
-            type="text"
+            type="label"
             isright 
+            isclear
+            @clearClick="clearClick1"
             label="经 营 门 店"
-            v-model.lazy='SNODECODE' 
-            :value="SNODECODE"
-            placeholder="点击输入" 
-            @clearClick="SNODECODE=''"
+            v-model.lazy='SNODEID' 
+            :text='this["SNODEID.SNODECODE"]+ " " +this["SNODEID.SNODENAME"]' 
             >
             </rs-field>
         </rs-list>
-        <h5 style="color:#f00">type="text" 文字输入框</h5>
-        <rs-list size="15" noborder>
-            <rs-field
-            type="text"
-            isright 
-            label="经 营 门 店"
-            v-model.lazy='SNODECODE' 
-            :value="SNODECODE"
-            placeholder="点击输入" 
-            @clearClick="SNODECODE=''"
-            >
-            </rs-field>
-        </rs-list>
-        <h5 style="color:#f00">type="number" 数字输入框</h5>
-        <rs-list size="15" noborder>
-            <rs-field
-            type="number"
-            isright 
-            label="数 量"
-            v-model.lazy='NUM' 
-            :value="NUM"
-            placeholder="点击输入" 
-            @clearClick="NUM=''"
-            >
-            </rs-field>
-        </rs-list>
-        <h5 style="color:#f00">type="password" 数字输入框</h5>
-        <rs-list size="15" noborder>
-            <rs-field
-            type="password"
-            isright 
-            label="密 码"
-            v-model.lazy='password' 
-            :value="password"
-            placeholder="点击输入" 
-            @clearClick="password=''"
-            >
-            </rs-field>
-        </rs-list>
+        
         <h5 style="color:#f00">type="data" 年月日选择</h5>
         <rs-list size="15" noborder>
             <rs-field
             type="date"
             isright 
+            isclear
             label="日 期"
             v-model.lazy='BILLDATE' 
             :text="BILLDATE|getWeek"
@@ -91,56 +52,120 @@
             >
             </rs-field>
         </rs-list>
-        <!-- <rr-list-label type="label" label="店 长" v-model.lazy='MANAGER' :value="MANAGER" isright>
-        </rr-list-label>
-        <rr-list-label type="data" label="开 始 日 期" v-model.lazy='SDATE' :text="SDATE|getWeek" isright>
-        </rr-list-label>
-        <rr-list-label type="data" v-model.lazy='SDATE' :text="SDATE|getWeek" isright>
-        </rr-list-label>
-        <rr-list-label type="data" label="结 束 日 期" v-model.lazy='EDATE' :text="EDATE|getWeek" isright>
-        </rr-list-label>
-        <rr-list-label type="text" label="结 束 日 期" v-model.lazy='SNODECODE' :value="SNODECODE|getWeek" placeholder="点击输入" @clearClick="SNODECODE=''">
-        </rr-list-label>
-        <rr-list-label type="text" label="网 点 编 号" noborder v-model.lazy='SNODECODE' :value="SNODECODE" placeholder="点击输入" @clearClick="SNODECODE=''">
-            <rs-button class="rs-field-button" slot="button" @click.stop="doQuery">查询</rs-button>
-        </rr-list-label> -->
         <h5>
-            有无底色： outlined {boolean} [outlined=true] 默认有底色<br/>
-            例如：&lt;rs-button type="default" outlined&gt;无底色&lt;/rs-button&gt;
+            以下只有type为text password有用<br/>
+            输入框是否点击：disabled {Boolean} 默认可以点击<br/>
+            输入框是否可读：readonly {Boolean} 默认可读<br/>
+            例如：&lt;rs-field type="text" label="经 营 门 店" v-model.lazy='SNODECODE' :text="SNODECODE | getSNODECODE" disabled&gt;无底色&lt;/rs-field&gt;
         </h5>
-        <rs-button type="default">有底色</rs-button>
-        <rs-button type="white" outlined>无底色</rs-button>
-        <rs-button type="default" outlined>无底色</rs-button>
-        <rs-button type="primary" outlined>无底色</rs-button>
+        <h5 style="color:#f00">type="text" 文字输入框，第二个无法点击</h5>
+        <rs-list size="15" noborder>
+            <rs-field
+            type="text"
+            label="经 营 门 店"
+            v-model.lazy='SNODECODE' 
+            :text="SNODECODE | getSNODECODE"
+            placeholder="点击输入" 
+            isclear
+            @clearClick="SNODECODE=''"
+            >
+            </rs-field>
+            <rs-field
+            type="text"
+            label="经 营 门 店"
+            disabled
+            v-model.lazy='SNODECODE' 
+            :text="SNODECODE | getSNODECODE"
+            placeholder="点击输入" 
+            >
+            </rs-field>
+        </rs-list>
+        <h5 style="color:#f00">type="number" 数字输入框，第二个可读状态</h5>
+        <rs-list size="15" noborder>
+            <rs-field
+            type="number"
+            label="数 量"
+            v-model.lazy='NUM'
+            placeholder="点击输入" 
+            isclear
+            @clearClick="NUM=''"
+            >
+            </rs-field>
+            <rs-field
+            type="number"
+            readonly
+            label="数 量"
+            v-model.lazy='NUM'
+            placeholder="点击输入"
+            >
+            </rs-field>
+        </rs-list>
+        <h5 style="color:#f00">type="password" 数字输入框</h5>
+        <rs-list size="15" noborder>
+            <rs-field
+            type="password"
+            label="密 码"
+            v-model.lazy='password' 
+            placeholder="点击输入" 
+            isclear
+            @clearClick="password=''"
+            >
+            </rs-field>
+        </rs-list>
         <h5>
-            有无底色： size {string} [size=normal] - 尺寸，接受 normal默认, small, large<br/>
+            右侧按钮<br/>
             例如：&lt;rs-button type="primary" size="normal"&gt;默认大小&lt;/rs-button&gt;
             <br/>
         </h5>
-        <rs-button size="normal">默认大小</rs-button>
-        <rs-button type="white" size="small">小按钮</rs-button>
-        <rs-button type="primary" size="small">小按钮</rs-button>
-        <div style="margin-left:-10px;width:100%"><rs-button type="primary" size="large">大按钮</rs-button></div>
+        <rs-list size="15" noborder>
+            <rs-field
+            type="text"
+            label="密 码"
+            v-model.lazy='SNODECODE' 
+            placeholder="点击输入" 
+            isclear
+            @clearClick="SNODECODE=''"
+            >
+              <rs-button slot="button">查询</rs-button>
+            </rs-field>
+        </rs-list>
         <h5>
-            有无底色： disabled {boolean} [disabled=false] - 禁用 默认不禁用<br/>
-            例如：&lt;rs-button type="primary&gt;不禁用&lt;/rs-button&gt;
+            type为textarea<br/>
+            行数：row {string} [label="姓 名"]
+            例如：&lt;rs-field type="textarea" label="说 明" rows='3' v-model.lazy='DETAIL' placeholder="点击输入"&gt;&lt;/rs-field&gt;
             <br/>
         </h5>
-        <rs-button type="default" disabled>禁用</rs-button>
-        <rs-button type="primary" disabled>禁用</rs-button>
-        <rs-button type="primary">不禁用</rs-button>    
-        <h5>
-            图标： icon {string} [icon] - 图标，例如mui-icon-home或者自定义的图标<br/>
-            例如：&lt;rs-button icon="mui-icon mui-icon-home"&gt;图标&lt;/rs-button&gt;
-            <br/>
-        </h5>
-        <rs-button icon="mui-icon mui-icon-home">图标</rs-button>
-        <rs-button icon="mui-icon mui-icon-home"></rs-button>
-        <h5>
-            文字按钮：link {boolean} [link=false] - 是否是文字按钮 默认为无文字按钮<br/>
-            例如：&lt;rs-button link"&gt;文字按钮&lt;/rs-button&gt;
-            <br/>
-        </h5>
+        <rs-list size="15" noborder>
+            <rs-field
+            type="textarea"
+            label="说 明"
+            rows='3'
+            v-model.lazy='DETAIL' 
+            placeholder="点击输入"
+            >
+            </rs-field>
+        </rs-list>
+        <h5 style="color:#f00">textarea第一个无法点击disabled，第二个可读状态readonly</h5>
+        <rs-list size="15" noborder>
+            <rs-field
+            type="textarea"
+            label="说 明"
+            rows='3'
+            disabled
+            v-model.lazy='DETAIL' 
+            placeholder="点击输入"
+            >
+            </rs-field>
+            <rs-field
+            type="textarea"
+            label="说 明"
+            rows='3'
+            readonly
+            v-model.lazy='DETAIL' 
+            placeholder="点击输入"
+            >
+            </rs-field>
+        </rs-list>
     </div>
     </div>  
   </div>
@@ -153,7 +178,8 @@ export default {
           'SNODEID': '4',
           'SNODEID.SNODECODE': 'T0004',
           'SNODEID.SNODENAME': '测试网点4',
-          'NUM': 2,
+          'SNODECODE': 'T0004',
+          'NUM': '2',
           'password': '22222278u',
           'BILLDATE': '2018-09-20'
       }
@@ -163,6 +189,10 @@ export default {
             setTimeout(()=>{
                 next(1);
             },2000);
+        },
+        clearClick1: function(){
+          this["SNODEID.SNODECODE"] = ''
+          this["SNODEID.SNODENAME"] = ''
         }
     },
     filters: {
@@ -177,5 +207,4 @@ export default {
 </script>
 <style scoped>
 h5{margin-top: 10px}
-input, button, .mui-btn{margin-top: 10px;margin-left: 10px}
 </style>

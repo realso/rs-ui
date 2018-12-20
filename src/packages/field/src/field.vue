@@ -13,34 +13,35 @@
       <span v-show="label" >：</span>
       <div class="rs-field-item">
         <div v-if="type==='label'">{{text}}</div>
-        <div v-else :style="active?'margin-right: 38px':''">
+        <div v-else :style="currentValue && type !== 'textarea' && (active||type === 'label')&&isclear?'margin-right: 38px':''">
           <textarea
             @change="$emit('change', currentValue)"
             ref="textarea"
-            class="rs-field-input"
-            :placeholder="placeholder"
+            class="rs-field-textarea"
+            :placeholder="placeholder&&!disabled&&!readonly"
             v-if="type === 'textarea'"
             :rows="rows"
             :disabled="disabled"
             :readonly="readonly"
             v-model="currentValue">
           </textarea>
-          <input
-            @change="$emit('change', currentValue)"
-            ref="input"
-            class="rs-field-input"
-            :placeholder="placeholder"
+          <div v-else class="rs-field--input">
+            <input 
             :number="type === 'number'"
-            v-else
-            :type="type"
-            @focus="active = true"
+            :type="type" ref="input" 
+            :placeholder="placeholder&&!disabled&&!readonly"
+            :style="Inputstyle"
+            @click="active = true;ISINPUTSHOW=true,$event.target.select()" 
+            class="rs-field-input"
             :disabled="disabled"
             :readonly="readonly"
-            :value="currentValue"
-            @input="handleInput">
+              @blur="change"
+              v-model="currentValue" />
+            <div v-if="text" v-show="ISINPUTSHOW==false" class="rs-field-inputtext"><span v-if="text==''">{{placeholder}}</span>{{text}}</div>
+          </div>
         </div>
-        <span v-if="!disableClear"
-          v-show="currentValue && type !== 'textarea' && active" 
+        <span v-if="isclear"
+          v-show="currentValue && type !== 'textarea' && (active||type === 'label')" 
           class="rs-field-clear mui-icon mui-icon-closeempty" 
           @click.stop="handleClick"></span>
       </div>
@@ -53,16 +54,44 @@ export default {
   name: "rs-field",
   data() {
     return {
-      active: false,
-      currentValue: this.value
+      ISINPUTSHOW: false,
+      active: false
     }
+  },
+  computed:{
+      currentValue:{
+        get(){
+          return this.value;
+        },
+        set(v){
+          this.value = v;
+        }
+      },
+      Inputstyle: function() {
+        if(this.text){
+          if(this.ISINPUTSHOW==false){
+            return 'opacity:0'
+          }else{
+            return 'opacity:1'
+          }
+        }else{
+          return 'opacity:1'
+        }
+      }
   },
   methods: {
     handleClick (evt) {
+      if (this.disabled || this.readonly) return;
+      this.currentValue = '';
       this.$emit('clearClick', evt)
     },
     handleInput(evt) {
       this.currentValue = evt.target.value;
+    },
+    change() {
+      this.active = false;
+      this.ISINPUTSHOW = false;
+      this.$emit('input', this.currentValue)
     },
     handleChangeD(evt){
       this.$emit('handleChangeD', evt)
@@ -74,7 +103,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'text'
+      default: 'label'
     },
     isright: Boolean,
     noborder: Boolean,
@@ -95,14 +124,9 @@ export default {
     placeholder: String,
     readonly: Boolean,
     disabled: Boolean,
-    disableClear: Boolean,
-    state: {
-      type: String,
-      default: 'default'
-    },
+    isclear: Boolean,
     value: String,
-    text: String,
-    attr: Object
+    text: String
   },
   watch: {
     value(val) {
@@ -110,18 +134,6 @@ export default {
     },
     currentValue(val) {
       this.$emit('input', val);
-    },
-    attr: {
-      immediate: true,
-      handler(attrs) {
-        this.$nextTick(() => {
-          const target = [this.$refs.input, this.$refs.textarea];
-          target.forEach(el => {
-            if (!el || !attrs) return;
-            Object.keys(attrs).map(name => el.setAttribute(name, attrs[name]));
-          });
-        });
-      }
     }
   }
 }
@@ -170,9 +182,30 @@ export default {
       @descendent 6em {
         width: 6em;
       }
+      @modifier input {
+        position: relative;
+        overflow: hidden;
+        height: 33px;
+        line-height: 33px;
+      }
       @descendent input {
-        height: 21px !important;
+        position: absolute; 
+        top: 0; 
+        left: 0;
+        width: 100%; 
+        border: none !important; 
+        height: 33px !important; 
+        line-height: 33px !important;
         padding: 0 !important;
+        font-size: inherit;
+        margin-bottom: 0 !important;
+        background: none !important;
+      }
+      @descendent inputtext{
+        height: 33px;
+      }
+      @descendent textarea {
+        padding: 5px 0 !important;
         line-height: 21px !important;
         margin-bottom: 0 !important;
         border: none !important;
