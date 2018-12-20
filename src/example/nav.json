@@ -70,5 +70,9 @@
   {
     "path": "/field",
     "name": "field"
+  },
+  {
+    "path": "/checkbox",
+    "name": "checkbox"
   }
 ]

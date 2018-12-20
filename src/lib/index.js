@@ -28,6 +28,7 @@ import Indicator from '../packages/indicator'
 import merge from '../utils/merge'
 import ImageUpload from '../packages/image-upload'
 import Field from '../packages/field'
+import Checkbox from '../packages/checkbox'
 
 const version = '1.0.18'
 const install = function(Vue, config = {}) {
@@ -57,6 +58,7 @@ const install = function(Vue, config = {}) {
     Vue.component(NumInput.name, NumInput)
     Vue.component(ImageUpload.name, ImageUpload)
     Vue.component(Field.name, Field)
+    Vue.component(Checkbox.name, Checkbox)
         // Vue.use(InfiniteScroll);
     Vue.use(Lazyload, merge({
         loading: require('../assets/loading-spin.svg'),
@@ -104,5 +106,6 @@ export default {
     // InfiniteScroll
     Lazyload,
     ImageUpload,
-    Field
+    Field,
+    Checkbox
 }

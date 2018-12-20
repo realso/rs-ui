@@ -19,6 +19,7 @@ import indicator from './indicator/indicator'
 import numInput from './numInput/numInput'
 import imageUpload from './imageUpload/imageUpload'
 import field from './field/field'
+import checkbox from './checkbox/checkbox'
 
 Vue.use(Router)
 
@@ -118,6 +119,11 @@ export default new Router({
           path: '/field',
           name: 'field',
           component: field
+        },
+        {
+          path: '/checkbox',
+          name: 'checkbox',
+          component: checkbox
         }
     ]
 })
