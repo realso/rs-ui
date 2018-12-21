@@ -131,7 +131,7 @@
         </rs-list>
         <h5>
             type为textarea<br/>
-            行数：row {string} [label="姓 名"]
+            行数：rows {string} [rows="3"] textarea高度为3行
             例如：&lt;rs-field type="textarea" label="说 明" rows='3' v-model.lazy='DETAIL' placeholder="点击输入"&gt;&lt;/rs-field&gt;
             <br/>
         </h5>
