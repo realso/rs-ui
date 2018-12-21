@@ -1,6 +1,6 @@
 <template>
   <div class="mui-layout mui-layout-top">
-    <rs-header title="按钮button" color="primary">
+    <rs-header title="输入框field" color="primary">
       <a slot="left" class="mui-icon mui-icon-left-nav mui-pull-left" href="/"></a>
     </rs-header>
 	<div class="mui-content">
