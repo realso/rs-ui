@@ -91,7 +91,8 @@ export default {
       startScrollTop: 0,
       currentY: 0,
       topStatus: '',
-      bottomStatus: ''
+      bottomStatus: '',
+      currentScrollTop:0
     }
   },
   computed: {
@@ -174,6 +175,7 @@ export default {
       this.$el.addEventListener('touchstart', this.handleTouchStart)
       this.$el.addEventListener('touchmove', this.handleTouchMove)
       this.$el.addEventListener('touchend', this.handleTouchEnd)
+     
     },
     init () {
       this.topStatus = 'pull'
@@ -187,6 +189,12 @@ export default {
       if (typeof this.topMethod === 'function') {
         this.bindTouchEvents()
       }
+      /*
+      不知道行不行
+      this.scrollEventTarget.addEventListener("scroll",()=>{
+          this.currentScrollTop=this.getScrollTop(this.scrollEventTarget);
+      })
+      */
     },
     fillContainer () {
       if (this.autoFill) {
@@ -267,7 +275,7 @@ export default {
         }
         this.bottomStatus = -this.translate >= this.bottomDistance ? 'drop' : 'pull'
       }
-      this.$emit('translate-change', this.translate)
+      this.$emit('translate-change', this.translate);
     },
     handleTouchEnd () {
       if (this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.translate > 0) {
@@ -295,10 +303,14 @@ export default {
       }
       this.$emit('translate-change', this.translate)
       this.direction = ''
+      this.currentScrollTop=this.getScrollTop(this.scrollEventTarget);
     }
   },
   mounted () {
     this.init()
+  },
+  activated(){
+    this.scrollEventTarget.scrollTo(0,this.currentScrollTop);
   }
 }
 </script>
