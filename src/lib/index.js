@@ -29,6 +29,7 @@ import merge from '../utils/merge'
 import ImageUpload from '../packages/image-upload'
 import Field from '../packages/field'
 import Checkbox from '../packages/checkbox'
+import Checklist from '../packages/checklist'
 
 const version = '1.0.18'
 const install = function(Vue, config = {}) {
@@ -59,6 +60,7 @@ const install = function(Vue, config = {}) {
     Vue.component(ImageUpload.name, ImageUpload)
     Vue.component(Field.name, Field)
     Vue.component(Checkbox.name, Checkbox)
+    Vue.component(Checklist.name, Checklist)
         // Vue.use(InfiniteScroll);
     Vue.use(Lazyload, merge({
         loading: require('../assets/loading-spin.svg'),
@@ -107,5 +109,6 @@ export default {
     Lazyload,
     ImageUpload,
     Field,
-    Checkbox
+    Checkbox,
+    Checklist
 }

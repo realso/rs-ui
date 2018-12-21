@@ -3,9 +3,9 @@
     <label class="rs-checkbox-label" :class="{'is-left':left,'is-disabled':disabled}"><slot></slot></label>
     <input type="checkbox"
     class="rs-checkbox-check"
-    :class="[{'is-left':left,'is-disabled':disabled},'rs-checkbox-'+ color]" 
-    :name="name"  
-    :disabled="disabled" 
+    :class="[{'is-left':left,'is-disabled':disabled},'rs-checkbox-'+ color,'rs-checkbox-'+shape]" 
+    :name="name"
+    :disabled="disabled"
     v-model="currentValue"
     :value="value">
   </div>
@@ -22,6 +22,7 @@
  * @param value {string}  - 选中值的数组
  * @param left {boolean} 对齐位置，默认右对齐，加上left复选框在左侧对齐
  * @param color {string} 选中的颜色，默认primary（蓝色），接受改变primary（蓝色），danger（红色）,success（绿色）,warning(黄色),white（白色）,grey（灰色）
+ * @param shape {string} 形状，默认mark（圆形内部是对号），接受mark（圆形内部是对号），markempty(只有对号)
  *
  * @example
  * <rs-button type="primary" size="large" icon="mui-icon mui-icon-home" link="true">按钮</rs-button>
@@ -52,12 +53,23 @@ export default {
           'grey'
         ].indexOf(value) > -1
       }
+    },
+    shape: {
+      type: String,
+      default: 'mark',
+      validator (value) {
+        return [
+          'mark',
+          'markempty'
+        ].indexOf(value) > -1
+      }
     }
   },
   methods: {
-    change: function(){
+    change: function(evt){
       if (this.disabled) return;
-      this.value = !this.value
+      this.value = !this.value;
+      this.$emit('click', evt)
     }
   },
   watch: {
@@ -101,7 +113,6 @@ export default {
         background-color: transparent;
         -webkit-appearance: none;
         &::before{
-          content: '\e411';
           font-family: Muiicons;
           font-size: 28px;
           font-weight: normal;
@@ -113,7 +124,6 @@ export default {
           -webkit-font-smoothing: antialiased;
         }
         &:checked:before{
-          content: '\e442';
           color: #58cffa;
         }
         @when left {
@@ -121,8 +131,21 @@ export default {
         }
         @when disabled {
           &::before,&:checked:before{
-            color: #c8c9cc;
+            color: #c8c9cc !important;
           }
+        }
+      }
+      @descendent mark {
+        &::before{
+          content: '\e411';
+        }
+        &:checked:before{
+          content: '\e442';
+        }
+      }
+      @descendent markempty {
+        &:checked:before{
+          content: '\e472';
         }
       }
       @descendent primary {

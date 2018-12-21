@@ -6,23 +6,30 @@
 	<div class="mui-content">
       <div class="mui-content-padded">
         <h5>
-          type {string} [type=default] - 显示类型，接受 default页眉页脚都有,content只有中间部分,header有页眉有中间部分, footer有中间部分有页脚<br/>
+          label {string} [label="复选框"]<br/>
+          name {string} [name=default] - <br/>
+          disabled {boolean} [disabled] - 禁用 默认不禁用<br/>
+          value {string}  - 选中值的数组<br/>
+          left {boolean} 对齐位置，默认右对齐，加上left复选框在左侧对齐<br/>
+          color {string} 选中的颜色，默认primary（蓝色），接受改变primary（蓝色），danger（红色）,success（绿色）,warning(黄色),white（白色）,grey（灰色）<br/>
           例如：
           <pre>
-&lt;rs-card type="default"&gt;
-  &lt;span slot="header"&gt;页眉&lt;/span&gt;
-  &lt;span slot="content"&gt;包含页眉页脚的卡片，页眉常用来显示面板标题，页脚用来显示额外信息或支持的操作（比如点赞、评论等）&lt;/span&gt;
-  &lt;span slot="footer"&gt;页脚&lt;/span&gt;
-&lt;/rs-card&gt;
+&lt;rs-checkbox v-model="checked" name="name1"&gt;
+  复选框
+&lt;/rs-checkbox&gt;
           </pre>
         </h5>
-        <rs-checkbox v-model="checked" name="name1">复选框</rs-checkbox>
-        <rs-checkbox v-model="checked1" name="name1" color="success">复选框</rs-checkbox>
+        <!-- <rs-checkbox v-model="checked" name="name1">复选框</rs-checkbox>
+        <rs-checkbox v-model="checked1" name="name1" color="success">复选框</rs-checkbox> -->
         <rs-checkbox v-model="checked2" name="name1" color="white">复选框</rs-checkbox>
         <rs-checkbox v-model="checked3" name="name1" color="white" disabled>复选框</rs-checkbox>
         <rs-checkbox v-model="checked4" name="name1" disabled>复选框</rs-checkbox>
         <rs-checkbox v-model="checked5" name="name1" left>复选框</rs-checkbox>
         <rs-checkbox v-model="checked6" disabled name="name1" left>复选框</rs-checkbox>
+        <rs-checklist>
+          <rs-checkbox v-model="checked" name="name1" shape="markempty">复选框</rs-checkbox>
+          <rs-checkbox v-model="checked1" name="name1" shape="markempty" color="success">复选框</rs-checkbox>
+        </rs-checklist>
       </div>
     </div>  
   </div>
