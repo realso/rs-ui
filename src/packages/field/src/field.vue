@@ -1,24 +1,25 @@
 <template>
-  <rs-list-item :isright="isright" :noborder="noborder">
+  <rs-list-item :isright="isright" :noborder="noborder" @click="click">
     <rs-datetime v-if="type==='date'||type==='datetime'||type==='time'" key="data" ref="date1" :type="type" v-model.lazy="currentValue" @confirm="handleChange"></rs-datetime>
     <div class="rs-field" v-if="type==='date'||type==='time'||type==='datetime'" @click.stop="open()">
       <span v-show="label" class="rs-field-label" :class="['rs-field-'+ width +'em']">{{label}}</span>
       <span v-show="label">：</span>
       <div class="rs-field-item">
         {{text}}
+        <slot name="text"></slot>
       </div>
     </div>
     <div v-else class="rs-field">
       <span v-show="label" class="rs-field-label" :class="['rs-field-'+ width +'em']">{{label}}</span>
       <span v-show="label" >：</span>
       <div class="rs-field-item">
-        <div v-if="type==='label'">{{text}}</div>
+        <div v-if="type==='label'">{{text}}<slot name="text"></slot></div>
         <div v-else :style="currentValue && type !== 'textarea' && (active||type === 'label')&&isclear?'margin-right: 38px':''">
           <textarea
             @change="$emit('change', currentValue)"
             ref="textarea"
             class="rs-field-textarea"
-            :placeholder="placeholder&&!disabled&&!readonly"
+            :placeholder="placeholder1"
             v-if="type === 'textarea'"
             :rows="rows"
             :disabled="disabled"
@@ -27,16 +28,17 @@
           </textarea>
           <div v-else class="rs-field--input">
             <input 
+            @change="$emit('change', currentValue)"
             :number="type === 'number'"
             :type="type" ref="input" 
-            :placeholder="placeholder&&!disabled&&!readonly"
+            :placeholder="placeholder1"
             :style="Inputstyle"
             @click="active = true;ISINPUTSHOW=true,$event.target.select()" 
             class="rs-field-input"
             :disabled="disabled"
             :readonly="readonly"
-              @blur="change"
-              v-model="currentValue" />
+            @blur="ISINPUTSHOW=false"
+            v-model="currentValue" />
             <div v-if="text" v-show="ISINPUTSHOW==false" class="rs-field-inputtext"><span v-if="text==''">{{placeholder}}</span>{{text}}</div>
           </div>
         </div>
@@ -77,6 +79,13 @@ export default {
         }else{
           return 'opacity:1'
         }
+      },
+      placeholder1: function() {
+        if (this.disabled || this.readonly){
+          return ''
+        }else{
+          return this.placeholder
+        }
       }
   },
   methods: {
@@ -88,15 +97,16 @@ export default {
     handleInput(evt) {
       this.currentValue = evt.target.value;
     },
-    change() {
-      this.active = false;
-      this.ISINPUTSHOW = false;
-      this.$emit('input', this.currentValue)
+    click(evt){
+      if (this.disabled || this.readonly) return;
+      this.$emit('click', evt)
     },
-    handleChangeD(evt){
-      this.$emit('handleChangeD', evt)
+    handleChange(evt){
+      if (this.disabled || this.readonly) return;
+      this.$emit('handleChange', evt)
     },
     open() {
+      if (this.disabled || this.readonly) return;
       this.$refs['date1'].open();
     },
   },

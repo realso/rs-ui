@@ -34,8 +34,8 @@
             @clearClick="clearClick1"
             label="经 营 门 店"
             v-model.lazy='SNODEID' 
-            :text='this["SNODEID.SNODECODE"]+ " " +this["SNODEID.SNODENAME"]' 
             >
+            <div slot="text">{{this["SNODEID.SNODECODE"]}} {{this["SNODEID.SNODENAME"]}}</div>
             </rs-field>
         </rs-list>
         
@@ -44,11 +44,9 @@
             <rs-field
             type="date"
             isright 
-            isclear
             label="日 期"
             v-model.lazy='BILLDATE' 
             :text="BILLDATE|getWeek"
-            @clearClick="BILLDATE=''"
             >
             </rs-field>
         </rs-list>
@@ -64,16 +62,18 @@
             type="text"
             label="经 营 门 店"
             v-model.lazy='SNODECODE' 
-            :text="SNODECODE | getSNODECODE"
+            :value="SNODECODE | getSNODECODE"
             placeholder="点击输入" 
             isclear
-            @clearClick="SNODECODE=''"
+            @click.native="click"
+            @clearClick="clearS"
             >
             </rs-field>
             <rs-field
             type="text"
             label="经 营 门 店"
             disabled
+            @click="click"
             v-model.lazy='SNODECODE' 
             :text="SNODECODE | getSNODECODE"
             placeholder="点击输入" 
@@ -108,7 +108,7 @@
             v-model.lazy='password' 
             placeholder="点击输入" 
             isclear
-            @clearClick="password=''"
+            @clearClick="clearP"
             >
             </rs-field>
         </rs-list>
@@ -118,15 +118,17 @@
             <br/>
         </h5>
         <rs-list size="15" noborder>
+            
             <rs-field
-            type="text"
-            label="密 码"
-            v-model.lazy='SNODECODE' 
-            placeholder="点击输入" 
+            type="date"
+            isright 
             isclear
-            @clearClick="SNODECODE=''"
+            label="日 期"
+            v-model.lazy='BILLDATE' 
+            :text="BILLDATE|getWeek"
+            @clearClick="BILLDATE=''"
             >
-              <rs-button slot="button">查询</rs-button>
+            <div slot="text">{{BILLDATE|getWeek}}<span style="color:#f00">{{BILLDATE}}</span></div>
             </rs-field>
         </rs-list>
         <h5>
@@ -193,6 +195,17 @@ export default {
         clearClick1: function(){
           this["SNODEID.SNODECODE"] = ''
           this["SNODEID.SNODENAME"] = ''
+        },
+        click: function(){
+            console.log("1")
+        },
+        clearS: function(){
+            console.log(this.SNODECODE)
+          this.SNODECODE = ''
+        },
+        clearP: function(){
+            console.log(this.password)
+          this.password = ''
         }
     },
     filters: {

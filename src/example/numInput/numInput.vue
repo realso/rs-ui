@@ -13,7 +13,7 @@
             例如：&lt;rs-numInput height='24' v-model.lazy="mlex" :text="mlex|toFixed(2)" size='14'&gt;&lt;/rs-numInput&gt;
         </h5>
         <rs-numInput height='24' v-model.lazy="mlex" :text="mlex|toFixed(2)" size='14'></rs-numInput>
-        <rs-numInput height='24' v-model.lazy="mlex" size='14' :text="mlex|toFixed(2)"></rs-numInput>  
+        <rs-numInput height='24' v-model.lazy="mlex" size='14' :text="mlex|toFixed(2)" disabled></rs-numInput>  
     </div>
     </div>  
   </div>

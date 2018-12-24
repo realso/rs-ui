@@ -175,7 +175,6 @@ export default {
       this.$el.addEventListener('touchstart', this.handleTouchStart)
       this.$el.addEventListener('touchmove', this.handleTouchMove)
       this.$el.addEventListener('touchend', this.handleTouchEnd)
-     
     },
     init () {
       this.topStatus = 'pull'

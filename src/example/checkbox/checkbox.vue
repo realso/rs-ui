@@ -1,7 +1,7 @@
 <template>
   <div class="mui-layout mui-layout-top">
     <rs-header title="复选框checkBox" color="primary">
-      <a slot="left" class="mui-icon mui-icon-left-nav mui-pull-left" href="/"></a>
+      <a slot="left" class="mui-icon mui-icon-left-nav mui-pull-left" href="/"></a> 
     </rs-header>
 	<div class="mui-content">
       <div class="mui-content-padded">

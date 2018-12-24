@@ -4,6 +4,7 @@
       @click="ISINPUTSHOW=true,$event.target.select()" 
        class="rs-numInput-input"
       @blur="change" 
+      :disabled="disabled"
       v-model="currentValue" />
     <div v-show="ISINPUTSHOW==false" class="rs-numInput-label">{{text}}</div>
   </div>
@@ -50,6 +51,7 @@ export default {
     },
     value: String,
     text: String,
+    disabled: Boolean,
     nativeType: {
       type: String,
       default: 'number'

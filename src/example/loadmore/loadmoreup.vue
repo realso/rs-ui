@@ -1,7 +1,7 @@
 <template>
   <div class="mui-layout mui-layout-top">
     <rs-header title="加载更多loadmore" color="primary">
-      <a slot="left" class="mui-icon mui-icon-left-nav" href="/"></a>
+      <a slot="left" class="mui-icon mui-icon-left-nav" href="#" onclick="JavaScript:window.history.back();"></a>
     </rs-header>
   	<div class="mui-content">
       <div class="mui-content-padded">
