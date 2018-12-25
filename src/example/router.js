@@ -20,6 +20,7 @@ import numInput from './numInput/numInput'
 import imageUpload from './imageUpload/imageUpload'
 import field from './field/field'
 import checkbox from './checkbox/checkbox'
+import accordion from './accordion/accordion'
 
 Vue.use(Router)
 
@@ -124,6 +125,11 @@ export default new Router({
           path: '/checkbox',
           name: 'checkbox',
           component: checkbox
+        },
+        {
+          path: '/accordion',
+          name: 'accordion',
+          component: accordion
         }
     ]
 })

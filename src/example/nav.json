@@ -74,5 +74,9 @@
   {
     "path": "/checkbox",
     "name": "checkbox"
+  },
+  {
+    "path": "/accordion",
+    "name": "accordion"
   }
 ]
