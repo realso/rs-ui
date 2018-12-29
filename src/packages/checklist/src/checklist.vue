@@ -1,6 +1,6 @@
 <template>
-  <ul class="rs-checklist" @change="$emit('change', currentValue)" :class="[{'rs-list-noborder':noborder}]">
-    <div class="rs-checklist-checkbox" v-for="(item,index) in items" :key="index">
+  <ul class="rs-checklist" :class="[{'rs-list-noborder':noborder}]">
+    <div class="rs-checklist-checkbox" @change="$emit('change', currentValue)" v-for="(item,index) in items" :key="index">
       <label class="rs-checklist-label" :class="{'is-left':left,'is-disabled':disabled}">{{item||item.value}}</label>
       <input type="checkbox"
       class="rs-checklist-check"
@@ -78,6 +78,11 @@ export default {
       }
     }  
   },
+  methods: {
+    change: function(){
+      this.$emit('input', val);
+    }
+  },
   watch: {
     value(val) {
       this.currentValue = val;
@@ -121,12 +126,14 @@ export default {
         top: 4px;
         right: 20px;
         display: inline-block;
-        width: 28px;
-        height: 26px;
+        width: 100%;
+        height: 33px;
         border: 0;
         outline: 0 !important;
         background-color: transparent;
         -webkit-appearance: none;
+        text-align: right;
+        overflow: hidden;
         &::before{
           font-family: Muiicons;
           font-size: 28px;
@@ -142,6 +149,8 @@ export default {
           color: #58cffa;
         }
         @when left {
+          text-align: left;
+          right: 0;
           left: 20px;
         }
         @when disabled {

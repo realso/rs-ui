@@ -25,7 +25,7 @@
         <rs-checkbox v-model="checked4" name="name1" disabled>复选框</rs-checkbox>
         <rs-checkbox v-model="checked5" name="name1" left>复选框</rs-checkbox>
         <rs-checkbox v-model="checked6" disabled name="name1" left>复选框</rs-checkbox>
-        <rs-checklist v-model="checked" name="name2" shape="markempty" color="success" :items="items">
+        <rs-checklist v-model="checked" name="name2" shape="markempty" color="success" :items="items" left>
         </rs-checklist>
         {{checked}}
       </div>
