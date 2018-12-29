@@ -6,7 +6,6 @@
 	<div class="mui-content">
       <div class="mui-content-padded">
         <h5>
-          label {string} [label="复选框"]<br/>
           name {string} [name=default] - <br/>
           disabled {boolean} [disabled] - 禁用 默认不禁用<br/>
           value {string}  - 选中值的数组<br/>
@@ -26,10 +25,9 @@
         <rs-checkbox v-model="checked4" name="name1" disabled>复选框</rs-checkbox>
         <rs-checkbox v-model="checked5" name="name1" left>复选框</rs-checkbox>
         <rs-checkbox v-model="checked6" disabled name="name1" left>复选框</rs-checkbox>
-        <rs-checklist>
-          <rs-checkbox v-model="checked" name="name1" shape="markempty">复选框</rs-checkbox>
-          <rs-checkbox v-model="checked1" name="name1" shape="markempty" color="success">复选框</rs-checkbox>
+        <rs-checklist v-model="checked" name="name2" shape="markempty" color="success" :items="items">
         </rs-checklist>
+        {{checked}}
       </div>
     </div>  
   </div>
@@ -39,13 +37,18 @@ export default {
     name: 'checkbox',
     data (){
       return {
-        checked: true,
+        checked: [],
         checked1: true,
         checked2: true,
         checked3: true,
         checked4: true,
         checked5: true,
-        checked6: true
+        checked6: true,
+        items: [
+          '苹果',
+          '梨子',
+          '橘子'
+        ]
       }
     },
     methods:{

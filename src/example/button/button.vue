@@ -26,7 +26,7 @@
         <rs-button type="default" outlined>无底色</rs-button>
         <rs-button type="primary" outlined>无底色</rs-button>
         <h5>
-            有无底色： size {string} [size=normal] - 尺寸，接受 normal默认, small, large<br/>
+            大小： size {string} [size=normal] - 尺寸，接受 normal默认, small, large<br/>
             例如：&lt;rs-button type="primary" size="normal"&gt;默认大小&lt;/rs-button&gt;
             <br/>
         </h5>
