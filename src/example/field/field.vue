@@ -141,7 +141,6 @@
             <rs-field
             type="textarea"
             label="说 明"
-            rows='3'
             v-model.lazy='DETAIL' 
             placeholder="点击输入"
             >

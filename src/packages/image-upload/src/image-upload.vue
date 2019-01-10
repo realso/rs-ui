@@ -1,15 +1,37 @@
 <template>
-  <div class="rs-image">
-    <div class="rs-image-item" :style="col|width" v-for="(item,index) in imgList" :key="index">
-        <div class="rs-image-close" @click.stop="del(index)"><span class="mui-icon mui-icon-closeempty"></span></div>
-        <img class="rs-image-show" :src="item.file.src"/>
-        <input class="rs-image-file" @change="change($event)" type="file" multiple/>
+  <div>
+    <div class="rs-image">
+      <div class="rs-image-item" :style="col|width" v-for="(item,index) in imgList" :key="index">
+          <div class="rs-image-close" @click.stop="del(index)"><span class="mui-icon mui-icon-closeempty"></span></div>
+          <img class="rs-image-show" :src="item.src" @click.stop="showImg(index)"/>
+          {{item.src}}
+      </div>
+      <div v-if="ISCANADD" class="rs-image-item" :style="col|width">
+          <span class="rs-image-icon mui-icon mui-icon-plusempty"><img class="rs-image-show" ref="tempImg"/></span>
+          <div v-if="takePicture" class="rs-image-file" @click.stop="showcontrol1()"></div>
+          <input v-if="!takePicture" class="rs-image-file" @change="change($event)" type="file" multiple/>
+      </div>
     </div>
-    <div v-if="limit>0" class="rs-image-item" :style="col|width">
-        <span class="rs-image-icon mui-icon mui-icon-plusempty"></span>
-        <input class="rs-image-file" @change="change($event)" type="file" multiple/>
-    </div>
-  </div>
+    <rs-popup class="rs-image-control" v-model="showcontrol" :closeOnClickModal="false" position="bottom">
+      <ul class="rs-image-clist">
+        <li @click.stop="paizhao()">
+          拍照或录像
+        </li>
+        <li>
+          <input class="rs-image-file" @change="change($event)" type="file" multiple/>
+          照片图库
+        </li>
+      </ul>
+      <ul class="rs-image-clist">
+        <li @click.stop="hidecontrol()">
+          取消
+        </li>
+      </ul>
+    </rs-popup>
+    <rs-popup v-if="showImg1&&imgList.length>0" v-model="showImg1" class="rs-showImg" :closeOnClickModal="false" position="right">
+      <rs-imageShow :activeIndex="activeIndex" :imgList="imgList" @click.native="hideImg" @del="del(index)"></rs-imageShow>
+    </rs-popup>
+  </div>  
 </template>
 
 <script>
@@ -24,17 +46,21 @@
  * @example
  * <rs-button type="primary" size="large" icon="mui-icon mui-icon-home" link="true">按钮</rs-button>
  */
+import lrz  from 'lrz'
 export default {
   name: 'rs-image-upload',
   data() {
     return {
       showFace: false,
       size: 0,
-      tempImgs:[]
-    }
+      tempImgs:[],
+      showImg1: false,
+      showcontrol: false,
+      activeIndex: 0
+      }
   },
   props: {
-    imgList: Array,
+    imgList:{type:Array,default:[]},
     col: {
       type: Number,
       default: 4
@@ -42,82 +68,76 @@ export default {
     limit:{//限制图片上传的数量
       type: Number,
       default: 4
+    },
+    quality:{
+      type:Object,
+      default:function(){return {width:1024}}
+    },
+    takePicture: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed:{
+    ISCANADD(){
+      return  this.imgList.length-this.limit<0
+    },
+    REMLENTH(){
+      return this.limit-this.imgList.length;
     }
   },
   methods: {
+    showImg (index) {
+      this.activeIndex = index
+      this.showImg1 = true
+    },
+    hideImg (index) {
+      this.showImg1 = false
+    },
+    showcontrol1 (el) {
+      this.showcontrol = true;
+    },
+    hidecontrol () {
+      this.showcontrol = false;
+    },
+    paizhao (){
+      this.showcontrol = false;
+      this.$emit("on-take-picture");
+    },
     change (el) {
       if (!el.target.files[0].size) return;
       this.fileList(el.target);
-      el.target.value = ''
+      el.target.value = '';
+      this.showcontrol = false;
     },
     fileList(fileList) {
       let files = fileList.files;
-      for (let i = 0; i < files.length; i++) {
+      let  len = files.length>this.REMLENTH?this.REMLENTH: files.length;
+      for (let i = 0; i < len; i++) {
         //判断是否为文件夹
         if (files[i].type != '') {
             this.fileAdd(files[i]);
-        } else {
-            //文件夹处理
-            this.folders(fileList.items[i]);
         }
       }
-    },
-    //文件夹处理
-    folders(files) {
-      let _this = this;
-      //判断是否为原生file
-      if (files.kind) {
-          files = files.webkitGetAsEntry();
+      if(len<files.length){
+        this.$toast(`超出最大上传数量${this.limit}张！`);
       }
-      files.createReader().readEntries(function (file) {
-        for (let i = 0; i < file.length; i++) {
-          if (file[i].isFile) {
-              _this.foldersAdd(file[i]);
-          } else {
-              _this.folders(file[i]);
-          }
-        }
-      });
-    },
-    foldersAdd(entry) {
-        let _this = this;
-        entry.file(function (file) {
-            _this.fileAdd(file)
-        })
     },
     fileAdd(file) {
-      if (this.limit !== undefined) this.limit--;
-      if (this.limit !== undefined && this.limit < 0) return;
-      //总大小
-      this.size = this.size + file.size;
+      if(!this.ISCANADD){
+        return;
+      }
       //判断是否为图片文件
       if (file.type.indexOf('image') == -1) {
           this.$toast('请选择图片文件');
       } else {
-        let reader = new FileReader();
-        let image = new Image();
-        let _this = this;
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            file.src = this.result;
-            image.onload = function(){
-                let width = image.width;
-                let height = image.height;
-                file.width = width;
-                file.height = height;
-                _this.imgList.push({
-                    file
-                });
-                console.log(_this.imgList)
-            };
-            image.src= file.src;
-          }
-        }
+        lrz(file, this.quality).then((ret)=>{
+            this.$emit("on-add-image",{src:ret.base64,base64:ret.base64,fileName:file.name,fileSize:file.size});
+        });
+       }
     },
     del(index) {
-      this.size = this.size - this.imgList[index].file.size;//总大小
-      this.imgList.splice(index, 1);
-      if (this.limit !== undefined) this.limit = 4-this.imgList.length;
+      this.$emit("on-del-image",index);
     }
   },
   filters: {
@@ -128,10 +148,36 @@ export default {
 }
 </script>
 <style lang="postcss">
+  .rs-showImg{ width: 100%; text-align: center; background: none;}
+  .rs-showImg img{width: 100%;}
+  .swiper-slide{position:relative;}
+  .rs-showImg .rs-image-close{left: auto; right: -20px; top: -20px; position: absolute;}
+  
   @component-namespace rs {
     @component image {
       overflow: hidden;
       text-align: center;
+      @descendent control {
+        background: none !important;
+        width: 90%;
+      }
+      @descendent clist {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 10px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        list-style: none;
+        li {
+          padding: 11px 0;
+          position: relative;
+          border-bottom: 1px solid #eee;
+          &:last-child{
+            border-bottom: none;
+          }
+        }
+      }
       @descendent item {
         float: left;
         position: relative;
@@ -146,7 +192,7 @@ export default {
         top: -10px;
         left: -10px;
         padding: 10px;
-        z-index: 9999;
+        z-index: 999;
         span{
           font-size: 22px;
           color: #fff;

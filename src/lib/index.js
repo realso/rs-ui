@@ -30,7 +30,12 @@ import ImageUpload from '../packages/image-upload'
 import Field from '../packages/field'
 import Checkbox from '../packages/checkbox'
 import Checklist from '../packages/checklist'
+import Radiolist from '../packages/radiolist'
 import Accordion from '../packages/accordion'
+import ImageShow from '../packages/imageShow'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+
 
 const version = '1.0.18'
 const install = function(Vue, config = {}) {
@@ -62,7 +67,9 @@ const install = function(Vue, config = {}) {
     Vue.component(Field.name, Field)
     Vue.component(Checkbox.name, Checkbox)
     Vue.component(Checklist.name, Checklist)
+    Vue.component(Radiolist.name, Radiolist)
     Vue.component(Accordion.name, Accordion)
+    Vue.component(ImageShow.name, ImageShow)
         // Vue.use(InfiniteScroll);
     Vue.use(Lazyload, merge({
         loading: require('../assets/loading-spin.svg'),
@@ -72,6 +79,7 @@ const install = function(Vue, config = {}) {
     Vue.$messagebox = Vue.prototype.$messagebox = MessageBox
     Vue.$toast = Vue.prototype.$toast = Toast
     Vue.$indicator = Vue.prototype.$indicator = Indicator;
+    Vue.use(VueAwesomeSwiper)
 }
 
 // auto install
@@ -113,5 +121,7 @@ export default {
     Field,
     Checkbox,
     Checklist,
-    Accordion
+    Radiolist,
+    Accordion,
+    ImageShow
 }
